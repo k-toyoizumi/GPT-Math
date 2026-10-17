@@ -3,6 +3,9 @@ version = "0.1.0"
 defaultTargets = ["XuTheorem41Audit"]
 
 [[lean_lib]]
+name = "XuGeneralAudit"
+
+[[lean_lib]]
 name = "XuTheorem41Audit"
 
 [[lean_lib]]
