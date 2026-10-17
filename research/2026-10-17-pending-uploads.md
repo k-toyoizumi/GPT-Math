@@ -1,0 +1,3 @@
+# Pending research artifacts (2026-10-17)
+
+The user authorized synchronization of prior generated research notes, reproducible Python scripts and a draft Lean proof. Artifacts include fixed-shift c=7 criterion, divisor congruence, offset bounds through 10^8 and independently checked certificates. Existing proof status: the new `DivisorCongruence.lean` is **uncompiled**, not Lean-verified. Numerical experiments do not establish novel theorems. The source files should be uploaded verbatim from the conversation's mounted artifacts before marking this task complete. Preserve experiment conditions, limitations and checks from each accompanying notebook.
