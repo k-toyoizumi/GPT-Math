@@ -21,4 +21,22 @@ def witnessExists : Bool :=
 theorem noWitnessInFiniteSearch : witnessExists = false := by
   native_decide
 
+/-! A matching positive witness appears at depth 8: u=8, a=1, s=319. -/
+
+theorem depthEightWitness :
+    Nat.Coprime 8 1 ∧
+    319 ∣ (1 * 670849 + 8) ∧
+    (319 + 1) % (4 * 8 * 1) = 0 := by
+  constructor
+  · decide
+  constructor
+  · norm_num
+  · norm_num
+
+theorem depthEightUnitFractionIdentity :
+    (4 : ℚ) / 670849 =
+      1 / 168240 + 1 / 53667920 + 1 / 14107954470 := by
+  norm_num
+
+
 end TypeIIDepthSeven
