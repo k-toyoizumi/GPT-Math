@@ -11,6 +11,9 @@ name = "XuTheorem41Audit"
 [[lean_lib]]
 name = "TypeIIReconstruction"
 
+[[lean_lib]]
+name = "TypeIIDepthSeven"
+
 [[require]]
 name = "mathlib"
 scope = "leanprover-community"
