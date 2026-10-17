@@ -18,9 +18,13 @@ jobs:
           ~/.elan/bin/lake exe cache get
       - name: Build and check all proofs
         run: ~/.elan/bin/lake build XuGeneralAudit XuTheorem41Audit TypeIIReconstruction TypeIIDepthSeven
+      - name: Compile finite Type II certificate draft
+        run: ~/.elan/bin/lake env lean research/2026-10-18-typeii-670849/TypeIIDepthSeven_UNCOMPILED.lean
+      - name: Run exact Python certificate
+        run: python3 research/2026-10-18-typeii-670849/verify.py
       - name: Reject incomplete proofs and custom axioms
         run: |
-          if grep -nE '(^|[^[:alnum:]_])(sorry|admit|axiom)([^[:alnum:]_]|$)' XuGeneralAudit.lean XuTheorem41Audit.lean TypeIIReconstruction.lean TypeIIDepthSeven.lean; then
+          if grep -nE '(^|[^[:alnum:]_])(sorry|admit|axiom)([^[:alnum:]_]|$)' XuGeneralAudit.lean XuTheorem41Audit.lean TypeIIReconstruction.lean TypeIIDepthSeven.lean research/2026-10-18-typeii-670849/TypeIIDepthSeven_UNCOMPILED.lean; then
             echo "Incomplete proof or custom axiom detected"
             exit 1
           fi
