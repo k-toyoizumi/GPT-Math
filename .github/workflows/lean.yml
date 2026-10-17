@@ -17,10 +17,10 @@ jobs:
           ~/.elan/bin/lake update
           ~/.elan/bin/lake exe cache get
       - name: Build and check all proofs
-        run: ~/.elan/bin/lake build XuGeneralAudit XuTheorem41Audit TypeIIReconstruction
+        run: ~/.elan/bin/lake build XuGeneralAudit XuTheorem41Audit TypeIIReconstruction TypeIIDepthSeven
       - name: Reject incomplete proofs and custom axioms
         run: |
-          if grep -nE '(^|[^[:alnum:]_])(sorry|admit|axiom)([^[:alnum:]_]|$)' XuGeneralAudit.lean XuTheorem41Audit.lean TypeIIReconstruction.lean; then
+          if grep -nE '(^|[^[:alnum:]_])(sorry|admit|axiom)([^[:alnum:]_]|$)' XuGeneralAudit.lean XuTheorem41Audit.lean TypeIIReconstruction.lean TypeIIDepthSeven.lean; then
             echo "Incomplete proof or custom axiom detected"
             exit 1
           fi
