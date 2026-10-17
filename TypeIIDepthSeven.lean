@@ -15,8 +15,11 @@ def witnessExists : Bool :=
       let u := i + 1
       let a := j + 1
       (Nat.gcd u a == 1) &&
-      (Nat.divisors (a * 670849 + u)).toList.any
-        (fun s => (s + 1) % (4 * u * a) == 0)
+      (List.range (a * 670849 + u)).any
+        (fun k =>
+          let s := k + 1
+          (a * 670849 + u) % s == 0 &&
+          (s + 1) % (4 * u * a) == 0)
 
 theorem noWitnessInFiniteSearch : witnessExists = false := by
   native_decide
