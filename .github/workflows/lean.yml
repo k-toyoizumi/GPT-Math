@@ -8,6 +8,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: leanprover/lean-action@v1
-        with:
-          use-mathlib-cache: true
+      - name: Install elan and Lean
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve Mathlib dependencies
+        run: |
+          ~/.elan/bin/lake update
+          ~/.elan/bin/lake exe cache get
+      - name: Build and check all proofs
+        run: ~/.elan/bin/lake build XuTheorem41Audit
+      - name: Reject incomplete proofs and custom axioms
+        run: |
+          if grep -nE '(^|[^[:alnum:]_])(sorry|admit|axiom)([^[:alnum:]_]|$)' XuTheorem41Audit.lean; then
+            echo "Incomplete proof or custom axiom detected"
+            exit 1
+          fi
