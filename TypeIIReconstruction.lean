@@ -30,3 +30,43 @@ theorem p670849_witness :
 #print axioms TypeIIReconstruction.p670849_witness
 
 end TypeIIReconstruction
+
+
+/-!
+## Exact fixed-first-denominator factorization
+
+This algebraic equivalence is classical; it is a verification bridge, not a
+new proof of the Erdős–Straus conjecture.  In particular, it does not
+establish the existence of positive divisor factors for arbitrary p.
+-/
+namespace FixedXFactorization
+
+theorem polynomial_identity (p x y z : ℤ) :
+    ((4*x-p)*y-p*x)*((4*x-p)*z-p*x) - (p*x)^2 =
+      (4*x-p)*(4*x*y*z - p*(x*y+x*z+y*z)) := by
+  ring
+
+theorem equation_iff_factorization (p x y z : ℤ)
+    (hshift : 4*x-p ≠ 0) :
+    4*x*y*z = p*(x*y+x*z+y*z) ↔
+      ((4*x-p)*y-p*x)*((4*x-p)*z-p*x) = (p*x)^2 := by
+  have hid := polynomial_identity p x y z
+  constructor
+  · intro h
+    have hr : (4*x-p)*(4*x*y*z-p*(x*y+x*z+y*z)) = 0 := by
+      rw [h]
+      ring
+    exact sub_eq_zero.mp (hid.trans hr)
+  · intro h
+    have hl : ((4*x-p)*y-p*x)*((4*x-p)*z-p*x) - (p*x)^2 = 0 :=
+      sub_eq_zero.mpr h
+    have hr : (4*x-p)*(4*x*y*z-p*(x*y+x*z+y*z)) = 0 :=
+      hid.symm.trans hl
+    have hs : 4*x*y*z-p*(x*y+x*z+y*z) = 0 :=
+      (mul_eq_zero.mp hr).resolve_left hshift
+    exact sub_eq_zero.mp hs
+
+#print axioms FixedXFactorization.polynomial_identity
+#print axioms FixedXFactorization.equation_iff_factorization
+
+end FixedXFactorization
