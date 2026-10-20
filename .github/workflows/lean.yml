@@ -18,6 +18,18 @@ jobs:
         run: |
           curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
           echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Install pinned toolchain with bounded transport retries
+        run: |
+          lean_pin=$(cat lean-toolchain)
+          for attempt in 1 2 3; do
+            if elan toolchain install "$lean_pin"; then
+              lean --version
+              exit 0
+            fi
+            echo "Pinned toolchain transport attempt $attempt failed"
+            if [ "$attempt" -eq 3 ]; then exit 1; fi
+            sleep 3
+          done
       - name: Verify pinned dependency manifest
         run: python3 scripts/dependency_lock_gate.py
       - name: Resolve Mathlib dependencies from lock

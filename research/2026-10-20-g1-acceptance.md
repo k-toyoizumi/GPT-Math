@@ -47,7 +47,7 @@ Handoff records carry task ID, source SHA, semantic result hash, status and next
 - Native-assisted finite theorems retain trust in Lean's native compiler/runtime bridge. They are not relabelled kernel-only.
 - Theorems and finite checks establish their stated scope only; neither novelty nor the general Erdős–Straus conjecture follows.
 - Full raw GitHub artifacts expire after 90 days. Required proof metadata, source hashes, CSV, run records and stage/job logs are stored in git. Persistent proof JSON omits only the verbose optional structural statement string; its verified statement hash remains. See [snapshot format](evidence/README.md).
-- External download failures can still prevent execution; they are classified as not executed and do not become green proof evidence.
+- Repeated transient TLS failures during pinned-toolchain retrieval were investigated in run 39415755584. Installation now retries the exact same pinned toolchain at most three times, retaining error output; it never disables TLS or changes versions. External download failures can still prevent execution; they are classified as not executed and do not become green proof evidence.
 - No two-hour external scheduler-delivery guarantee is claimed because recurring operation is stopped. Re-enabling it requires a new explicit instruction and delivery-level validation.
 
 ## Ordinary-chat starting point
