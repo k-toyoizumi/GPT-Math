@@ -141,6 +141,38 @@ def wArithmetic : BiAF :=
     funext a
     simp [wWeight]⟩
 
+/-- Normalize the concrete weight so that its value at `(1,1)` is one. -/
+def normalizedWWeight (u a : ℕ) : ℚ :=
+  2 * wWeight u a
+
+/-- Away from the prime `2`, the normalized concrete weight on an axis is
+exactly the reciprocal totient weight. -/
+theorem normalizedWWeight_axis_of_two_not_dvd
+    (n : ℕ) (hn : n ≠ 0) (h2n : ¬ 2 ∣ n) :
+    normalizedWWeight n 1 = 1 / (Nat.totient n : ℚ) := by
+  have hcop : Nat.Coprime 4 n :=
+    (Nat.prime_two.coprime_iff_not_dvd.mpr h2n).pow_left 2
+  have htot : (Nat.totient n : ℚ) ≠ 0 := by
+    exact_mod_cast (Nat.totient_pos.mpr (Nat.pos_of_ne_zero hn)).ne'
+  rw [normalizedWWeight,
+    wWeight_of_ne_zero_coprime n 1 hn one_ne_zero (Nat.coprime_one_right n)]
+  simp only [mul_one]
+  rw [Nat.totient_mul hcop]
+  norm_num [htot]
+
+/-- For an odd prime power, the normalized concrete axis value is the local
+factor used in the residual-kernel table. -/
+theorem normalizedWWeight_odd_prime_pow_axis
+    {p e : ℕ} (hp : p.Prime) (h2p : ¬ 2 ∣ p) (he : 0 < e) :
+    normalizedWWeight (p ^ e) 1 =
+      1 / ((p ^ (e - 1) * (p - 1) : ℕ) : ℚ) := by
+  have hp0 : p ^ e ≠ 0 := pow_ne_zero e hp.ne_zero
+  have hcop : Nat.Coprime 2 (p ^ e) :=
+    (Nat.prime_two.coprime_iff_not_dvd.mpr h2p).pow_right e
+  rw [normalizedWWeight_axis_of_two_not_dvd (p ^ e) hp0
+    (Nat.prime_two.coprime_iff_not_dvd.mp hcop)]
+  rw [Nat.totient_prime_pow hp he]
+
 /--
 The residual kernel is exactly the finite double weighted-Möbius transform
 of the original two-variable arithmetic function.  The nonzero hypothesis is
@@ -297,6 +329,8 @@ theorem candidate_constant_transfer :
 #print axioms WMobiusFinite.finite_wWeight_reconstruct
 #print axioms WMobiusFinite.innerKernel_explicit
 #print axioms WMobiusFinite.innerKernel_wArithmetic_explicit
+#print axioms WMobiusFinite.normalizedWWeight_axis_of_two_not_dvd
+#print axioms WMobiusFinite.normalizedWWeight_odd_prime_pow_axis
 #print axioms WMobiusFinite.odd_axis_from_weighted_moebius
 #print axioms WMobiusFinite.odd_diagonal_from_weighted_moebius
 #print axioms WMobiusFinite.odd_local_mass
