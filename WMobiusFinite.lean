@@ -511,6 +511,7 @@ theorem normalized_innerKernel_wArithmetic_odd_prime_diagonal
   rw [hdiag, hright, hleft, horigin]
   norm_num only [zero_sub, mul_one]
   rw [Nat.cast_sub hp.one_lt.le]
+  norm_num only [Nat.cast_one]
   exact odd_diagonal_from_weighted_moebius (p : ℚ) hpQ0 hpQ1
 
 
