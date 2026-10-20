@@ -504,29 +504,5 @@ theorem normalized_innerKernel_wArithmetic_odd_prime_diagonal
   simpa only [zero_sub] using
     odd_diagonal_from_weighted_moebius (p : ℚ) hpQ0 hpQ1
 
-#print axioms WMobiusFinite.divideByN_mul
-#print axioms WMobiusFinite.weightedZeta_mul_weightedMoebius
-#print axioms WMobiusFinite.finite_double_reconstruct
-#print axioms WMobiusFinite.finite_wWeight_reconstruct
-#print axioms WMobiusFinite.innerKernel_explicit
-#print axioms WMobiusFinite.innerKernel_wArithmetic_explicit
-#print axioms WMobiusFinite.wWeight_comm
-#print axioms WMobiusFinite.normalizedWWeight_comm
-#print axioms WMobiusFinite.normalizedWWeight_axis_of_two_not_dvd
-#print axioms WMobiusFinite.normalizedWWeight_odd_prime_pow_axis
-#print axioms WMobiusFinite.normalizedWWeight_one_odd_prime_pow_axis
-#print axioms WMobiusFinite.normalizedWWeight_same_prime_pow_eq_zero
-#print axioms WMobiusFinite.odd_axis_from_weighted_moebius
-#print axioms WMobiusFinite.odd_diagonal_from_weighted_moebius
-#print axioms WMobiusFinite.odd_local_mass
-#print axioms WMobiusFinite.oddAbsoluteExcess_le
-#print axioms WMobiusFinite.two_local_mass
-#print axioms WMobiusFinite.candidate_constant_transfer
-#print axioms WMobiusFinite.innerKernel_wArithmetic_prime_one
-#print axioms WMobiusFinite.innerKernel_wArithmetic_one_prime
-#print axioms WMobiusFinite.innerKernel_wArithmetic_prime_prime
-#print axioms WMobiusFinite.normalized_innerKernel_wArithmetic_odd_prime_axis
-#print axioms WMobiusFinite.normalized_innerKernel_wArithmetic_one_odd_prime_axis
-#print axioms WMobiusFinite.normalized_innerKernel_wArithmetic_odd_prime_diagonal
 
 end WMobiusFinite
