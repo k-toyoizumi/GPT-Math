@@ -512,7 +512,8 @@ theorem normalized_innerKernel_wArithmetic_odd_prime_diagonal
   norm_num only [zero_sub, mul_one]
   rw [Nat.cast_sub hp.one_lt.le]
   norm_num only [Nat.cast_one]
-  exact odd_diagonal_from_weighted_moebius (p : ℚ) hpQ0 hpQ1
+  simpa only [neg_mul] using
+    odd_diagonal_from_weighted_moebius (p : ℚ) hpQ0 hpQ1
 
 
 end WMobiusFinite
