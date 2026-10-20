@@ -1,13 +1,41 @@
 {
   "seen": [
-    "0f442701d573a56fc7a2f27f34b111c5e3c2eb7f5c3bca8e37e438a8e42508c0"
+    "0f442701d573a56fc7a2f27f34b111c5e3c2eb7f5c3bca8e37e438a8e42508c0",
+    "0c0cb72809e76590cb3c78d49d3c6396ab81b29f02ab58037c1110531a6c1114",
+    "7cd2b7c10bb9a8d96a302989fe26ff151254fd605987952e4081c36251fedabf",
+    "c54a2bf6f0dc2635cb5819f105476335c812eae23e29d2f94b8fea58c7eaf153",
+    "9d4f9f95dcba11950606238286c27b9dc6dd48fec69454721deb19f773e903ac",
+    "5e672dc6a4473f05df143bf0d69a79480a898f0396da4e093ff7dc6ba6bae897",
+    "b5c23f0e0e610fe2fe703a65fb4d26499748bda07f63626f8c2d6405b228ec2b",
+    "30df4e557eb3098bb0b225bfa7e19f373a5c65c3a1931779ea7dd95fbced2a6f",
+    "f495822e3189c1f063ac28bc13bdf18aaaa12e34446b4cb68107c5b78343408f"
   ],
-  "attempts": 2,
-  "progress_count": 1,
-  "task_id": "T11",
-  "source_sha": "b3efc0fa91f4ed8d3402166a6a29748321b69a6a",
-  "result_hash": "bf79c5751c3ecbbba0fd1ba4ec7f157dc73d5f3dcc9e951b9188881b79e5d0e5",
+  "attempts": 10,
+  "progress_count": 9,
+  "task_id": "T12-J",
+  "source_sha": "5c15b5d542085360e2bb3eba041e555c47cd0578",
+  "result_hash": "89f88ea7bdb5c49bdb3c93cba3ecc0b70f377ea6b15793c5fae69a64a483d4d6",
   "status": "success",
-  "next_action": "stop; await explicit research authorization",
-  "duplicate": true
+  "next_action": "T12-K: prove that the normalized odd-prime residual kernel vanishes on all positive prime-power exponent pairs outside (1,0), (0,1), and (1,1), then use the complete finite support table to state the finite odd-prime local mass; keep infinite Euler products and analytic tails postponed",
+  "duplicate": false,
+  "publication_status": "published_to_research_branch",
+  "publication_commit": "8c3c4abdfc89b72832f18e541eace32c123c4307",
+  "verified_head_sha": "8c3c4abdfc89b72832f18e541eace32c123c4307",
+  "verified_merge_sha": "d92890201f73a79e88f2100510f45c0170388652",
+  "actions_run_id": 39501530517,
+  "actions_attempt": 1,
+  "verification_artifact_id": 12302015176,
+  "recovery_status": "T12A/T12B ZIPs and original rejection text remain unavailable; every T12-J candidate was backed up as a Git blob before publication, failed CI attempts were retained as failures, and the final exact source passed CI",
+  "handoff_update_method": "scripts/handoff.py algorithm reproduced exactly because the execution environment was unavailable",
+  "failed_attempts": [
+    39496247386,
+    39497001329,
+    39497461823,
+    39497918537,
+    39498360138,
+    39498771244,
+    39499194084,
+    39499637652,
+    39500055017
+  ]
 }
