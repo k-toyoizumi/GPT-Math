@@ -129,8 +129,40 @@ theorem finite_double_reconstruct (A : BiAF) (u a : ℕ) (ha : a ≠ 0) :
       rw [← inner_reconstruct A x.2 a ha, ArithmeticFunction.mul_apply]
       simp [Finset.mul_sum, mul_assoc]
 
+/-- The concrete summand used in `W(J)`, extended by zero to the axes and to
+non-coprime pairs so that it is an `ArithmeticFunction` in the first variable. -/
+def wWeight (u a : ℕ) : ℚ :=
+  if u = 0 ∨ a = 0 ∨ ¬ Nat.Coprime u a then 0
+  else 1 / (Nat.totient (4 * u * a) : ℚ)
+
+/-- `wWeight` packaged for the two-variable finite inversion theorem. -/
+def wArithmetic : BiAF :=
+  ⟨fun u a => wWeight u a, by
+    funext a
+    simp [wWeight]⟩
+
+@[simp]
+theorem wWeight_of_ne_zero_coprime (u a : ℕ) (hu : u ≠ 0) (ha : a ≠ 0)
+    (hcop : Nat.Coprime u a) :
+    wWeight u a = 1 / (Nat.totient (4 * u * a) : ℚ) := by
+  simp [wWeight, hu, ha, hcop]
+
+/--
+Concrete finite weighted Möbius reconstruction of the summand of `W(J)`.
+This is still only an exact finite identity; it supplies no convergence,
+tail estimate, Euler-product evaluation, or asymptotic statement.
+-/
+theorem finite_wWeight_reconstruct (u a : ℕ) (ha : a ≠ 0) :
+    wWeight u a =
+      ∑ x ∈ u.divisorsAntidiagonal,
+        ∑ y ∈ a.divisorsAntidiagonal,
+          weightedZeta x.1 * weightedZeta y.1 *
+            innerKernel wArithmetic x.2 y.2 := by
+  simpa [wArithmetic] using finite_double_reconstruct wArithmetic u a ha
+
 #print axioms WMobiusFinite.divideByN_mul
 #print axioms WMobiusFinite.weightedZeta_mul_weightedMoebius
 #print axioms WMobiusFinite.finite_double_reconstruct
+#print axioms WMobiusFinite.finite_wWeight_reconstruct
 
 end WMobiusFinite
