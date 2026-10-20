@@ -382,7 +382,7 @@ theorem innerKernel_wArithmetic_prime_one
   have hsum (f : ℕ → ℚ) :
       ∑ d ∈ p.divisors, f d = f 1 + f p := by
     rw [show p = p ^ 1 by simp, Nat.sum_divisors_prime_pow hp]
-    simp
+    simp [Finset.sum_range_succ]
   rw [innerKernel_wArithmetic_explicit p 1 (by norm_num)]
   simp [Nat.sum_divisorsAntidiagonal, hsum,
     weightedMoebius, divideByN, hp, hp.ne_zero]
@@ -396,7 +396,7 @@ theorem innerKernel_wArithmetic_one_prime
   have hsum (f : ℕ → ℚ) :
       ∑ d ∈ p.divisors, f d = f 1 + f p := by
     rw [show p = p ^ 1 by simp, Nat.sum_divisors_prime_pow hp]
-    simp
+    simp [Finset.sum_range_succ]
   rw [innerKernel_wArithmetic_explicit 1 p hp.ne_zero]
   simp [Nat.sum_divisorsAntidiagonal, hsum,
     weightedMoebius, divideByN, hp, hp.ne_zero]
@@ -414,12 +414,18 @@ theorem innerKernel_wArithmetic_prime_prime
   have hsum (f : ℕ → ℚ) :
       ∑ d ∈ p.divisors, f d = f 1 + f p := by
     rw [show p = p ^ 1 by simp, Nat.sum_divisors_prime_pow hp]
-    simp
+    simp [Finset.sum_range_succ]
   rw [innerKernel_wArithmetic_explicit p p hp.ne_zero]
-  rw [Nat.sum_divisorsAntidiagonal]
+  rw [Nat.sum_divisorsAntidiagonal
+    (fun y1 y2 =>
+      ∑ x ∈ p.divisorsAntidiagonal,
+        weightedMoebius y1 * weightedMoebius x.1 * wWeight x.2 y2)]
   rw [hsum]
   simp only [Nat.div_one, Nat.div_self hp.ne_zero]
-  rw [Nat.sum_divisorsAntidiagonal, Nat.sum_divisorsAntidiagonal]
+  rw [Nat.sum_divisorsAntidiagonal
+    (fun x1 x2 => weightedMoebius 1 * weightedMoebius x1 * wWeight x2 p)]
+  rw [Nat.sum_divisorsAntidiagonal
+    (fun x1 x2 => weightedMoebius p * weightedMoebius x1 * wWeight x2 1)]
   rw [hsum, hsum]
   simp [weightedMoebius, divideByN, hp, hp.ne_zero]
   ring
