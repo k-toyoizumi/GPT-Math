@@ -1,0 +1,410 @@
+[
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "name": "TypeIIDepthSeven.depthEightUnitFractionIdentity",
+    "source": "TypeIIDepthSeven.lean",
+    "blob_sha": "142f3e5e1b80ad177ca6fc3ebf20b6b6588f3368",
+    "source_sha256": "1e5ad92330e6b06752f953353c0428da610321e3882e47c698f25fc113f09b18",
+    "source_sha": "b3efc0fa91f4ed8d3402166a6a29748321b69a6a",
+    "run_id": "39415127573",
+    "attempt": "1",
+    "statement_hash": "8e218a4aff181e46603290a8e48f9b95e0c1dbcdb261c1ccb226202124fa4f5d",
+    "trust": "kernel-checked"
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "name": "TypeIIDepthSeven.depthEightWitness",
+    "source": "TypeIIDepthSeven.lean",
+    "blob_sha": "142f3e5e1b80ad177ca6fc3ebf20b6b6588f3368",
+    "source_sha256": "1e5ad92330e6b06752f953353c0428da610321e3882e47c698f25fc113f09b18",
+    "source_sha": "b3efc0fa91f4ed8d3402166a6a29748321b69a6a",
+    "run_id": "39415127573",
+    "attempt": "1",
+    "statement_hash": "c2f979e6a7b84dffeb721c6a8dffecc9113827e8f0a14a729db51d366efaf03a",
+    "trust": "kernel-checked"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Lean.ofReduceBool",
+      "Lean.trustCompiler"
+    ],
+    "name": "TypeIIDepthSeven.noWitnessInFiniteSearch",
+    "source": "TypeIIDepthSeven.lean",
+    "blob_sha": "142f3e5e1b80ad177ca6fc3ebf20b6b6588f3368",
+    "source_sha256": "1e5ad92330e6b06752f953353c0428da610321e3882e47c698f25fc113f09b18",
+    "source_sha": "b3efc0fa91f4ed8d3402166a6a29748321b69a6a",
+    "run_id": "39415127573",
+    "attempt": "1",
+    "statement_hash": "d67a04c18f642c0feda54347b1a4c5605b36c4f2677aaa4257255f16d9dddade",
+    "trust": "native-assisted"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Lean.ofReduceBool",
+      "Lean.trustCompiler"
+    ],
+    "name": "TypeIIDepthSeven.noWitnessInFiniteSearch._proof_1_3",
+    "source": "TypeIIDepthSeven.lean",
+    "blob_sha": "142f3e5e1b80ad177ca6fc3ebf20b6b6588f3368",
+    "source_sha256": "1e5ad92330e6b06752f953353c0428da610321e3882e47c698f25fc113f09b18",
+    "source_sha": "b3efc0fa91f4ed8d3402166a6a29748321b69a6a",
+    "run_id": "39415127573",
+    "attempt": "1",
+    "statement_hash": "d67a04c18f642c0feda54347b1a4c5605b36c4f2677aaa4257255f16d9dddade",
+    "trust": "native-assisted"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound",
+      "Classical.choice",
+      "Lean.ofReduceBool",
+      "Lean.trustCompiler"
+    ],
+    "name": "TypeIIDivisorComplete.noWitnessForAnyPositiveDivisor",
+    "source": "TypeIIDivisorComplete.lean",
+    "blob_sha": "55b7bfea64e80b5ffbc7470a6bc9042b6ef91c96",
+    "source_sha256": "745e4b3ad50b71cc2fb30c4fe8f6b43606c7bb579dd4293484cbdbb5028240e8",
+    "source_sha": "b3efc0fa91f4ed8d3402166a6a29748321b69a6a",
+    "run_id": "39415127573",
+    "attempt": "1",
+    "statement_hash": "c6475faf7be3633d1de5a86433d94994e55a4fde42d990ca642159e92cf382ac",
+    "trust": "native-assisted"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "name": "TypeIIDivisorComplete.noWitnessForAnyPositiveDivisor._proof_1_1",
+    "source": "TypeIIDivisorComplete.lean",
+    "blob_sha": "55b7bfea64e80b5ffbc7470a6bc9042b6ef91c96",
+    "source_sha256": "745e4b3ad50b71cc2fb30c4fe8f6b43606c7bb579dd4293484cbdbb5028240e8",
+    "source_sha": "b3efc0fa91f4ed8d3402166a6a29748321b69a6a",
+    "run_id": "39415127573",
+    "attempt": "1",
+    "statement_hash": "6294970cc16ef06c5487089a6196e3113a5ec1fa00bfd9a6632f5162eed9f255",
+    "trust": "kernel-checked"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound",
+      "Classical.choice",
+      "Lean.ofReduceBool",
+      "Lean.trustCompiler"
+    ],
+    "name": "TypeIIDivisorComplete.noWitnessInDivisorSets",
+    "source": "TypeIIDivisorComplete.lean",
+    "blob_sha": "55b7bfea64e80b5ffbc7470a6bc9042b6ef91c96",
+    "source_sha256": "745e4b3ad50b71cc2fb30c4fe8f6b43606c7bb579dd4293484cbdbb5028240e8",
+    "source_sha": "b3efc0fa91f4ed8d3402166a6a29748321b69a6a",
+    "run_id": "39415127573",
+    "attempt": "1",
+    "statement_hash": "b83fb9caeaf9bb3ca25cee233eecabf7567570fd136f133991d395a3a374f653",
+    "trust": "native-assisted"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound",
+      "Classical.choice",
+      "Lean.ofReduceBool",
+      "Lean.trustCompiler"
+    ],
+    "name": "TypeIIDivisorComplete.noWitnessInDivisorSets._proof_1_3",
+    "source": "TypeIIDivisorComplete.lean",
+    "blob_sha": "55b7bfea64e80b5ffbc7470a6bc9042b6ef91c96",
+    "source_sha256": "745e4b3ad50b71cc2fb30c4fe8f6b43606c7bb579dd4293484cbdbb5028240e8",
+    "source_sha": "b3efc0fa91f4ed8d3402166a6a29748321b69a6a",
+    "run_id": "39415127573",
+    "attempt": "1",
+    "statement_hash": "b83fb9caeaf9bb3ca25cee233eecabf7567570fd136f133991d395a3a374f653",
+    "trust": "native-assisted"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound",
+      "Classical.choice"
+    ],
+    "name": "TypeIIProgression.divisor_witness_progression",
+    "source": "ProgressionCompleteness.lean",
+    "blob_sha": "715c00774862e76a8a41d24ac471fdf55bd080d7",
+    "source_sha256": "0dbd2ad8d6b27a9816fde2268039f297b4565c13db0cefaff2ce8104d7d7a343",
+    "source_sha": "b3efc0fa91f4ed8d3402166a6a29748321b69a6a",
+    "run_id": "39415127573",
+    "attempt": "1",
+    "statement_hash": "a24691d678cf2187b38c539a4db9a3cd90f0926539bf52cef7b54f2120f8f235",
+    "trust": "kernel-checked"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "name": "TypeIIProgression.divisor_witness_progression._proof_1_1",
+    "source": "ProgressionCompleteness.lean",
+    "blob_sha": "715c00774862e76a8a41d24ac471fdf55bd080d7",
+    "source_sha256": "0dbd2ad8d6b27a9816fde2268039f297b4565c13db0cefaff2ce8104d7d7a343",
+    "source_sha": "b3efc0fa91f4ed8d3402166a6a29748321b69a6a",
+    "run_id": "39415127573",
+    "attempt": "1",
+    "statement_hash": "238ec89ce9800614744f9cc9b2eae94796250e409be9638d64a9b5db45cf1fbf",
+    "trust": "kernel-checked"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "name": "TypeIIProgression.divisor_witness_progression._proof_1_2",
+    "source": "ProgressionCompleteness.lean",
+    "blob_sha": "715c00774862e76a8a41d24ac471fdf55bd080d7",
+    "source_sha256": "0dbd2ad8d6b27a9816fde2268039f297b4565c13db0cefaff2ce8104d7d7a343",
+    "source_sha": "b3efc0fa91f4ed8d3402166a6a29748321b69a6a",
+    "run_id": "39415127573",
+    "attempt": "1",
+    "statement_hash": "f2e99fff6a8aac75a9153fce2773a7c57f03cf650e238df029d0370bdd760e79",
+    "trust": "kernel-checked"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "name": "TypeIIProgression.divisor_witness_progression._proof_1_3",
+    "source": "ProgressionCompleteness.lean",
+    "blob_sha": "715c00774862e76a8a41d24ac471fdf55bd080d7",
+    "source_sha256": "0dbd2ad8d6b27a9816fde2268039f297b4565c13db0cefaff2ce8104d7d7a343",
+    "source_sha": "b3efc0fa91f4ed8d3402166a6a29748321b69a6a",
+    "run_id": "39415127573",
+    "attempt": "1",
+    "statement_hash": "4523c8f2878ce02ab4a0043c021228d138660c7f87a62d360c5d5c5276e3d09c",
+    "trust": "kernel-checked"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "name": "TypeIIProgression.progression_witness_divisibility",
+    "source": "ProgressionCompleteness.lean",
+    "blob_sha": "715c00774862e76a8a41d24ac471fdf55bd080d7",
+    "source_sha256": "0dbd2ad8d6b27a9816fde2268039f297b4565c13db0cefaff2ce8104d7d7a343",
+    "source_sha": "b3efc0fa91f4ed8d3402166a6a29748321b69a6a",
+    "run_id": "39415127573",
+    "attempt": "1",
+    "statement_hash": "c20564ad51ad62576380d335f6e961eb23c7e80dc94f06744224857aeec79fa4",
+    "trust": "kernel-checked"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "name": "TypeIIProgression.progression_witness_divisibility._proof_1_1",
+    "source": "ProgressionCompleteness.lean",
+    "blob_sha": "715c00774862e76a8a41d24ac471fdf55bd080d7",
+    "source_sha256": "0dbd2ad8d6b27a9816fde2268039f297b4565c13db0cefaff2ce8104d7d7a343",
+    "source_sha": "b3efc0fa91f4ed8d3402166a6a29748321b69a6a",
+    "run_id": "39415127573",
+    "attempt": "1",
+    "statement_hash": "33e1ff2b865cebddf7201874c96eb7862993fb330c7d32c1665cfc861584bf74",
+    "trust": "kernel-checked"
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "name": "TypeIIReconstruction.cross_multiplication",
+    "source": "TypeIIReconstruction.lean",
+    "blob_sha": "333458220556a5330fc8968573dd93ae14e74b8f",
+    "source_sha256": "5a17026db13e40a165cbdc2c7ce6fdc7b782f2490ae6040f2db9ea7d6a4938be",
+    "source_sha": "b3efc0fa91f4ed8d3402166a6a29748321b69a6a",
+    "run_id": "39415127573",
+    "attempt": "1",
+    "statement_hash": "0565ca17f61ae43e08b545cc8085d189ffd55e4de8d57d844063046f9dd527a6",
+    "trust": "kernel-checked"
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "name": "TypeIIReconstruction.p670849_witness",
+    "source": "TypeIIReconstruction.lean",
+    "blob_sha": "333458220556a5330fc8968573dd93ae14e74b8f",
+    "source_sha256": "5a17026db13e40a165cbdc2c7ce6fdc7b782f2490ae6040f2db9ea7d6a4938be",
+    "source_sha": "b3efc0fa91f4ed8d3402166a6a29748321b69a6a",
+    "run_id": "39415127573",
+    "attempt": "1",
+    "statement_hash": "09ed8a7828ccbf90113489cff1ff991df14922c9b5f9d4ac5d2b4b7302d8f059",
+    "trust": "kernel-checked"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "name": "XuAudit.corrected_example",
+    "source": "XuTheorem41Audit.lean",
+    "blob_sha": "c875c716edcb2979d2b86b583e4c45cb7e06db18",
+    "source_sha256": "1296aa370fd2986367865330ebef0cc7d5206a413a6260ceab709ca0fe43a5a5",
+    "source_sha": "b3efc0fa91f4ed8d3402166a6a29748321b69a6a",
+    "run_id": "39415127573",
+    "attempt": "1",
+    "statement_hash": "d452291ca66b66101a9668d8cd1c8cf035440e580fc70ee1725ee5a292ab483e",
+    "trust": "kernel-checked"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "name": "XuAudit.displayed_identity_false",
+    "source": "XuTheorem41Audit.lean",
+    "blob_sha": "c875c716edcb2979d2b86b583e4c45cb7e06db18",
+    "source_sha256": "1296aa370fd2986367865330ebef0cc7d5206a413a6260ceab709ca0fe43a5a5",
+    "source_sha": "b3efc0fa91f4ed8d3402166a6a29748321b69a6a",
+    "run_id": "39415127573",
+    "attempt": "1",
+    "statement_hash": "18372f8caa2766c9d44f6ee0d979e6032406c2ac91ff8a96e0f960dae33ea646",
+    "trust": "kernel-checked"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "name": "XuAudit.displayed_residual",
+    "source": "XuTheorem41Audit.lean",
+    "blob_sha": "c875c716edcb2979d2b86b583e4c45cb7e06db18",
+    "source_sha256": "1296aa370fd2986367865330ebef0cc7d5206a413a6260ceab709ca0fe43a5a5",
+    "source_sha": "b3efc0fa91f4ed8d3402166a6a29748321b69a6a",
+    "run_id": "39415127573",
+    "attempt": "1",
+    "statement_hash": "32b310c53e109327c2db6d40173ddcbf7a9110cb16ea2e3c687e170161a4a2cd",
+    "trust": "kernel-checked"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "name": "XuGeneralAudit.equality_iff_corrected",
+    "source": "XuGeneralAudit.lean",
+    "blob_sha": "0385d8db60642d48a877f0983f300008db899c15",
+    "source_sha256": "aa780b45be502d28e0937162296f2e9463a2f08192418f2e8e5e8b4f5796219f",
+    "source_sha": "b3efc0fa91f4ed8d3402166a6a29748321b69a6a",
+    "run_id": "39415127573",
+    "attempt": "1",
+    "statement_hash": "4cf709cb98681c514380370928a15eddccc6b9ddd1bf63f4541694f0f7363cb1",
+    "trust": "kernel-checked"
+  },
+  {
+    "axioms": [
+      "propext"
+    ],
+    "name": "XuGeneralAudit.equality_iff_corrected._simp_1_1",
+    "source": "XuGeneralAudit.lean",
+    "blob_sha": "0385d8db60642d48a877f0983f300008db899c15",
+    "source_sha256": "aa780b45be502d28e0937162296f2e9463a2f08192418f2e8e5e8b4f5796219f",
+    "source_sha": "b3efc0fa91f4ed8d3402166a6a29748321b69a6a",
+    "run_id": "39415127573",
+    "attempt": "1",
+    "statement_hash": "31cc18b43120fe5b66b4fee4357ec1f1ce4f021d9116a17a01b8a0caf44f24b4",
+    "trust": "kernel-checked"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "name": "XuGeneralAudit.general_residual",
+    "source": "XuGeneralAudit.lean",
+    "blob_sha": "0385d8db60642d48a877f0983f300008db899c15",
+    "source_sha256": "aa780b45be502d28e0937162296f2e9463a2f08192418f2e8e5e8b4f5796219f",
+    "source_sha": "b3efc0fa91f4ed8d3402166a6a29748321b69a6a",
+    "run_id": "39415127573",
+    "attempt": "1",
+    "statement_hash": "2459945dd528440be1fcb91d052660dbe5b34e1e27ea48fce6ca3626a9a194be",
+    "trust": "kernel-checked"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "name": "_private.XuTheorem41Audit.0.XuAudit.correctedLhs.eq_1",
+    "source": "XuTheorem41Audit.lean",
+    "blob_sha": "c875c716edcb2979d2b86b583e4c45cb7e06db18",
+    "source_sha256": "1296aa370fd2986367865330ebef0cc7d5206a413a6260ceab709ca0fe43a5a5",
+    "source_sha": "b3efc0fa91f4ed8d3402166a6a29748321b69a6a",
+    "run_id": "39415127573",
+    "attempt": "1",
+    "statement_hash": "2622a87a3cc3c252170c2a6d5c12175b5d08f05ee8b15c335127ddf3fec8d0ff",
+    "trust": "kernel-checked"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "name": "_private.XuTheorem41Audit.0.XuAudit.correctedRhs.eq_1",
+    "source": "XuTheorem41Audit.lean",
+    "blob_sha": "c875c716edcb2979d2b86b583e4c45cb7e06db18",
+    "source_sha256": "1296aa370fd2986367865330ebef0cc7d5206a413a6260ceab709ca0fe43a5a5",
+    "source_sha": "b3efc0fa91f4ed8d3402166a6a29748321b69a6a",
+    "run_id": "39415127573",
+    "attempt": "1",
+    "statement_hash": "e665917bb96a5744abaab93b6c0efd8d0b858d5d3ca0da03dd8e28bd8f3944ac",
+    "trust": "kernel-checked"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "name": "_private.XuTheorem41Audit.0.XuAudit.lhs.eq_1",
+    "source": "XuTheorem41Audit.lean",
+    "blob_sha": "c875c716edcb2979d2b86b583e4c45cb7e06db18",
+    "source_sha256": "1296aa370fd2986367865330ebef0cc7d5206a413a6260ceab709ca0fe43a5a5",
+    "source_sha": "b3efc0fa91f4ed8d3402166a6a29748321b69a6a",
+    "run_id": "39415127573",
+    "attempt": "1",
+    "statement_hash": "b2edcf6f09bf3e14b8720c9b151315d8ec6d901e9f1d220a2d37cc385327324e",
+    "trust": "kernel-checked"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "name": "_private.XuTheorem41Audit.0.XuAudit.rhs.eq_1",
+    "source": "XuTheorem41Audit.lean",
+    "blob_sha": "c875c716edcb2979d2b86b583e4c45cb7e06db18",
+    "source_sha256": "1296aa370fd2986367865330ebef0cc7d5206a413a6260ceab709ca0fe43a5a5",
+    "source_sha": "b3efc0fa91f4ed8d3402166a6a29748321b69a6a",
+    "run_id": "39415127573",
+    "attempt": "1",
+    "statement_hash": "e6e8aa625655f6c653b1b6c3bb37f80336a45a6da0e1433bba43371ba6cae0ef",
+    "trust": "kernel-checked"
+  }
+]

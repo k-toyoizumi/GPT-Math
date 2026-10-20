@@ -1,0 +1,112 @@
+{
+  "source_sha": "baa0f2ccc69cfc47acca4702f593b959cbac2bd3",
+  "tree_sha": "d8765e2351a5d3ebfead6c9b6db80d2107cb41c8",
+  "pr_head_sha": "",
+  "run_id": "39413799356",
+  "attempt": "1",
+  "event": "push",
+  "started_at": 1792495103.1024678,
+  "steps": [
+    {
+      "name": "dependencies",
+      "command": [
+        "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python3",
+        "scripts/dependency_lock_gate.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "coverage",
+      "command": [
+        "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python3",
+        "scripts/lean_inventory_gate.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "unit-tests",
+      "command": [
+        "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "first_denominator_offset",
+      "command": [
+        "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python3",
+        "experiments/first_denominator_offset.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "fixed_first_denominator",
+      "command": [
+        "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python3",
+        "experiments/fixed_first_denominator.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "verify_certificate",
+      "command": [
+        "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python3",
+        "experiments/verify_certificate.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "environment",
+      "command": [
+        "bash",
+        "-c",
+        "lean --version && lake --version && python3 --version"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "lean-build",
+      "command": [
+        "lake",
+        "build"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "unchanged-lock",
+      "command": [
+        "git",
+        "diff",
+        "--exit-code",
+        "--",
+        "lake-manifest.json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "axioms",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "ProofAudit.lean"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "fault-injection",
+      "command": [
+        "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python3",
+        "scripts/fault_injection.py"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "status": "success",
+  "finished_at": 1792495156.8000195
+}

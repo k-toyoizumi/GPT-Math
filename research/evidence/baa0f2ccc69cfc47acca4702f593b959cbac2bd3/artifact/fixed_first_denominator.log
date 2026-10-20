@@ -1,0 +1,4 @@
+prime p < 100000, p % 24 == 1: 1181
+fixed a=(p+3)/4 solvable: 575
+fixed a not solvable: 606
+All exact rational and divisor-pair checks passed.

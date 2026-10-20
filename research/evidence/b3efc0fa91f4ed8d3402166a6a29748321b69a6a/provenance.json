@@ -1,0 +1,14 @@
+{
+  "source_sha": "b3efc0fa91f4ed8d3402166a6a29748321b69a6a",
+  "pr_head_sha": "3a805415e6e33a9ab2665d285b45f4961bd91f69",
+  "run_id": 39415127573,
+  "attempt": 1,
+  "job_id": 118602182607,
+  "artifact_id": 12260737458,
+  "artifact_zip_sha256": "c8babb888d16b87dba738bde52d90ae34e290362b3adb1e6cf8508002cc9af8d",
+  "retrieved": true,
+  "all_upstream_checksums_verified": true,
+  "statement_hashes_verified": true,
+  "projection": "Optional verbose structural statement strings and redundant axioms.log omitted; all mandatory proof evidence fields retained.",
+  "certificate_identical_to_first_clean_run": true
+}

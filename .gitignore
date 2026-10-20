@@ -1,6 +1,6 @@
 .lake/
 __pycache__/
 *.pyc
-evidence/
+/evidence/
 ProofAudit.lean
 experiments/certificate.csv

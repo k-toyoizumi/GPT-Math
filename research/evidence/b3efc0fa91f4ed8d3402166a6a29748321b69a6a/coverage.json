@@ -1,0 +1,49 @@
+{
+  "tracked_lean_files": [
+    "ProgressionCompleteness.lean",
+    "TypeIIDepthSeven.lean",
+    "TypeIIDivisorComplete.lean",
+    "TypeIIReconstruction.lean",
+    "XuGeneralAudit.lean",
+    "XuTheorem41Audit.lean"
+  ],
+  "lake_targets": [
+    "ProgressionCompleteness",
+    "TypeIIDepthSeven",
+    "TypeIIDivisorComplete",
+    "TypeIIReconstruction",
+    "XuGeneralAudit",
+    "XuTheorem41Audit"
+  ],
+  "file_count": 6,
+  "registry": {
+    "ProgressionCompleteness.lean": {
+      "status": "adopted",
+      "target": "ProgressionCompleteness"
+    },
+    "TypeIIDepthSeven.lean": {
+      "status": "adopted",
+      "target": "TypeIIDepthSeven"
+    },
+    "TypeIIDivisorComplete.lean": {
+      "status": "adopted",
+      "target": "TypeIIDivisorComplete"
+    },
+    "TypeIIReconstruction.lean": {
+      "status": "adopted",
+      "target": "TypeIIReconstruction"
+    },
+    "XuGeneralAudit.lean": {
+      "status": "adopted",
+      "target": "XuGeneralAudit"
+    },
+    "XuTheorem41Audit.lean": {
+      "status": "adopted",
+      "target": "XuTheorem41Audit"
+    }
+  },
+  "verification_command": [
+    "lake",
+    "build"
+  ]
+}

@@ -1,0 +1,44 @@
+[
+  {
+    "parameters": {
+      "prime_bound_exclusive": 100000,
+      "prime_residue_mod24": 1,
+      "offset_inclusive": [
+        0,
+        15
+      ],
+      "method": "factorization and divisor-pair search; exact rational witness checks"
+    },
+    "source": "experiments/first_denominator_offset.py",
+    "sha256": "d48a6c231b53aed6d8ecaa03a294b8ecddcfe9bac7a946e2dbed0f61d33b6f62",
+    "arithmetic": "exact integer/rational",
+    "output": "limit 100000 max_offset 15\ntotal 1181\noffset_counts [('0', 575), ('1', 475), ('2', 83), ('3', 11), ('4', 16), ('5', 15), ('6', 1), ('7', 5)]\nexamples [(0, (97, (25, 810, 392850))), (1, (73, (20, 219, 4380))), (2, (1129, (285, 29354, 8365890))), (3, (2689, (676, 121186, 8472598004))), (4, (7561, (1895, 756100, 286561900))), (5, (1201, (306, 15980, 172727820))), (6, (94441, (23617, 82607972, 85817374320172))), (7, (21169, (5300, 3619899, 19185464700)))]\n"
+  },
+  {
+    "parameters": {
+      "prime_bound_exclusive": 100000,
+      "prime_residue_mod24": 1,
+      "first_denominator": "(p+3)//4",
+      "method": "independent factor criterion and exact rational witness checks"
+    },
+    "source": "experiments/fixed_first_denominator.py",
+    "sha256": "8230a4c0a20ee97a67751308bc30f027ec4cb82afbc935b1b150bb30b5dd8712",
+    "arithmetic": "exact integer/rational",
+    "output": "prime p < 100000, p % 24 == 1: 1181\nfixed a=(p+3)/4 solvable: 575\nfixed a not solvable: 606\nAll exact rational and divisor-pair checks passed.\n"
+  },
+  {
+    "parameters": {
+      "p": 670849,
+      "u_a_inclusive": [
+        1,
+        7
+      ],
+      "boundary_depth": 8,
+      "method": "factor-generated divisors vs sqrt trial division vs arithmetic progression; prime and positive-denominator checks"
+    },
+    "source": "experiments/verify_certificate.py",
+    "sha256": "e3bc0e859a80348642e0ed406f2f3f76e2ee828c2876a9c81464d99b41fcc6bd",
+    "arithmetic": "exact integer/rational",
+    "output": "35 pairs; 426 divisors; no J<=7 witnesses; J=8: [(8, 1, '319 7711')]\nnaive candidates: 91235600\nprogression candidates: 2385498\nWrote /home/runner/work/GPT-Math/GPT-Math/experiments/certificate.csv\n"
+  }
+]

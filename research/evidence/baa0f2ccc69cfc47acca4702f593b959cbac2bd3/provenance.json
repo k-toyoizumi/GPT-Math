@@ -1,0 +1,10 @@
+{
+  "run_id": 39413799356,
+  "attempt": 1,
+  "job_id": 118597784389,
+  "artifact_id": 12261060349,
+  "zip_sha256": "3461291c77d6e5d9c35d52f078f1fa86c0ac209f42597993396ec6bd066575b6",
+  "retrieved": true,
+  "checksums_verified": true,
+  "purpose": "first clean integration reproduction; superseded by final compiled-environment audit"
+}

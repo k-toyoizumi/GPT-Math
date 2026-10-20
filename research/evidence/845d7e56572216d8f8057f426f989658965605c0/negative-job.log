@@ -1,0 +1,225 @@
+﻿2026-10-20T11:22:31.4187453Z Current runner version: '2.337.0'
+2026-10-20T11:22:31.4207201Z ##[group]Runner Image Provisioner
+2026-10-20T11:22:31.4207854Z Hosted Compute Agent
+2026-10-20T11:22:31.4208216Z Version: 20261015.610
+2026-10-20T11:22:31.4208666Z Commit: 267fdb4e8bbec4ab5ea31367f3a00d5c480c7656
+2026-10-20T11:22:31.4209160Z Build Date: 2026-10-14T17:06:54Z
+2026-10-20T11:22:31.4209609Z Worker ID: {37e51d2f-3df2-43fa-a7f8-7ba3c17ba97a}
+2026-10-20T11:22:31.4210063Z Region: westus3
+2026-10-20T11:22:31.4210417Z Cloud: Azure
+2026-10-20T11:22:31.4210800Z ##[endgroup]
+2026-10-20T11:22:31.4212049Z ##[group]Operating System
+2026-10-20T11:22:31.4212424Z Ubuntu
+2026-10-20T11:22:31.4212847Z 24.04.5
+2026-10-20T11:22:31.4213179Z LTS
+2026-10-20T11:22:31.4213539Z ##[endgroup]
+2026-10-20T11:22:31.4213917Z ##[group]Runner Image
+2026-10-20T11:22:31.4214275Z Image: ubuntu-24.04
+2026-10-20T11:22:31.4214993Z Version: 20261018.339.1
+2026-10-20T11:22:31.4215859Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261018.339/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-20T11:22:31.4216861Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261018.339
+2026-10-20T11:22:31.4217445Z ##[endgroup]
+2026-10-20T11:22:31.4218204Z ##[group]GITHUB_TOKEN Permissions
+2026-10-20T11:22:31.4219617Z Contents: read
+2026-10-20T11:22:31.4220096Z Metadata: read
+2026-10-20T11:22:31.4220473Z ##[endgroup]
+2026-10-20T11:22:31.4222152Z Secret source: Actions
+2026-10-20T11:22:31.4222779Z Cache mode: write
+2026-10-20T11:22:31.4223297Z Prepare workflow directory
+2026-10-20T11:22:31.4444398Z Prepare all required actions
+2026-10-20T11:22:31.4477450Z Getting action download info
+2026-10-20T11:22:31.7481225Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-20T11:22:31.8483990Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+2026-10-20T11:22:31.9569380Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-10-20T11:22:32.1544025Z Complete job name: failure-evidence
+2026-10-20T11:22:32.2014290Z ##[group]Run actions/checkout@v4
+2026-10-20T11:22:32.2014711Z with:
+2026-10-20T11:22:32.2014955Z   repository: k-toyoizumi/GPT-Math
+2026-10-20T11:22:32.2017074Z   token: ***
+2026-10-20T11:22:32.2017311Z   ssh-strict: true
+2026-10-20T11:22:32.2017551Z   ssh-user: git
+2026-10-20T11:22:32.2017794Z   persist-credentials: true
+2026-10-20T11:22:32.2018062Z   clean: true
+2026-10-20T11:22:32.2018309Z   sparse-checkout-cone-mode: true
+2026-10-20T11:22:32.2018590Z   fetch-depth: 1
+2026-10-20T11:22:32.2018827Z   fetch-tags: false
+2026-10-20T11:22:32.2019067Z   show-progress: true
+2026-10-20T11:22:32.2019313Z   lfs: false
+2026-10-20T11:22:32.2019539Z   submodules: false
+2026-10-20T11:22:32.2019785Z   set-safe-directory: true
+2026-10-20T11:22:32.2020063Z   allow-unsafe-pr-checkout: false
+2026-10-20T11:22:32.2020415Z ##[endgroup]
+2026-10-20T11:22:32.2726732Z Syncing repository: k-toyoizumi/GPT-Math
+2026-10-20T11:22:32.2728419Z ##[group]Getting Git version info
+2026-10-20T11:22:32.2729277Z Working directory is '/home/runner/work/GPT-Math/GPT-Math'
+2026-10-20T11:22:32.2730004Z [command]/usr/bin/git version
+2026-10-20T11:22:32.2808894Z git version 2.55.0
+2026-10-20T11:22:32.2823980Z ##[endgroup]
+2026-10-20T11:22:32.2836367Z Temporarily overriding HOME='/home/runner/work/_temp/7ff98561-3db2-4a5c-90e4-df1ab7fb4452' before making global git config changes
+2026-10-20T11:22:32.2837478Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-20T11:22:32.2840772Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/GPT-Math/GPT-Math
+2026-10-20T11:22:32.2891165Z Deleting the contents of '/home/runner/work/GPT-Math/GPT-Math'
+2026-10-20T11:22:32.2897872Z ##[group]Initializing the repository
+2026-10-20T11:22:32.2898502Z [command]/usr/bin/git init /home/runner/work/GPT-Math/GPT-Math
+2026-10-20T11:22:32.3002359Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-20T11:22:32.3003573Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-20T11:22:32.3004535Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-20T11:22:32.3005226Z hint: call:
+2026-10-20T11:22:32.3005875Z hint:
+2026-10-20T11:22:32.3006374Z hint: 	git config --global init.defaultBranch <name>
+2026-10-20T11:22:32.3006930Z hint:
+2026-10-20T11:22:32.3007405Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-20T11:22:32.3008236Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-20T11:22:32.3008844Z hint:
+2026-10-20T11:22:32.3009195Z hint: 	git branch -m <name>
+2026-10-20T11:22:32.3009649Z hint:
+2026-10-20T11:22:32.3010172Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-20T11:22:32.3011231Z Initialized empty Git repository in /home/runner/work/GPT-Math/GPT-Math/.git/
+2026-10-20T11:22:32.3016208Z [command]/usr/bin/git remote add origin https://github.com/k-toyoizumi/GPT-Math
+2026-10-20T11:22:32.3086460Z ##[endgroup]
+2026-10-20T11:22:32.3086909Z ##[group]Disabling automatic garbage collection
+2026-10-20T11:22:32.3089334Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-20T11:22:32.3124148Z ##[endgroup]
+2026-10-20T11:22:32.3124550Z ##[group]Setting up auth
+2026-10-20T11:22:32.3130162Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-20T11:22:32.3165399Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-20T11:22:32.3491993Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-20T11:22:32.3529054Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-20T11:22:32.3726682Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-20T11:22:32.3763861Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-20T11:22:32.3972132Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-20T11:22:32.4021167Z ##[endgroup]
+2026-10-20T11:22:32.4022003Z ##[group]Fetching the repository
+2026-10-20T11:22:32.4029653Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +845d7e56572216d8f8057f426f989658965605c0:refs/remotes/origin/ci/lean-coverage-evidence-20261020-0338
+2026-10-20T11:22:32.9019040Z From https://github.com/k-toyoizumi/GPT-Math
+2026-10-20T11:22:32.9020139Z  * [new ref]         845d7e56572216d8f8057f426f989658965605c0 -> origin/ci/lean-coverage-evidence-20261020-0338
+2026-10-20T11:22:32.9023286Z ##[endgroup]
+2026-10-20T11:22:32.9024128Z ##[group]Determining the checkout info
+2026-10-20T11:22:32.9025836Z ##[endgroup]
+2026-10-20T11:22:32.9030699Z [command]/usr/bin/git sparse-checkout disable
+2026-10-20T11:22:32.9085684Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-20T11:22:32.9120704Z ##[group]Checking out the ref
+2026-10-20T11:22:32.9124387Z [command]/usr/bin/git checkout --progress --force -B ci/lean-coverage-evidence-20261020-0338 refs/remotes/origin/ci/lean-coverage-evidence-20261020-0338
+2026-10-20T11:22:32.9205484Z Switched to a new branch 'ci/lean-coverage-evidence-20261020-0338'
+2026-10-20T11:22:32.9209776Z branch 'ci/lean-coverage-evidence-20261020-0338' set up to track 'origin/ci/lean-coverage-evidence-20261020-0338'.
+2026-10-20T11:22:32.9214318Z ##[endgroup]
+2026-10-20T11:22:32.9257055Z [command]/usr/bin/git log -1 --format=%H
+2026-10-20T11:22:32.9286616Z 845d7e56572216d8f8057f426f989658965605c0
+2026-10-20T11:22:32.9498564Z ##[group]Run actions/setup-python@v5
+2026-10-20T11:22:32.9499054Z with:
+2026-10-20T11:22:32.9499290Z   python-version: 3.12
+2026-10-20T11:22:32.9499557Z   check-latest: false
+2026-10-20T11:22:32.9501785Z   token: ***
+2026-10-20T11:22:32.9502035Z   update-environment: true
+2026-10-20T11:22:32.9502311Z   allow-prereleases: false
+2026-10-20T11:22:32.9502576Z   freethreaded: false
+2026-10-20T11:22:32.9502828Z ##[endgroup]
+2026-10-20T11:22:33.0407241Z ##[group]Installed versions
+2026-10-20T11:22:33.0477168Z (node:2105) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-20T11:22:33.0478418Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-20T11:22:33.0479083Z Successfully set up CPython (3.12.15)
+2026-10-20T11:22:33.0479762Z ##[endgroup]
+2026-10-20T11:22:33.0611506Z ##[group]Run python3 - <<'PY'
+2026-10-20T11:22:33.0612183Z [36;1mpython3 - <<'PY'[0m
+2026-10-20T11:22:33.0612698Z [36;1mimport json[0m
+2026-10-20T11:22:33.0613049Z [36;1mfrom pathlib import Path[0m
+2026-10-20T11:22:33.0613429Z [36;1mp=Path('lake-manifest.json')[0m
+2026-10-20T11:22:33.0613794Z [36;1mdata=json.loads(p.read_text())[0m
+2026-10-20T11:22:33.0614164Z [36;1mdata['packages'][0]['rev']='0'*40[0m
+2026-10-20T11:22:33.0614544Z [36;1mp.write_text(json.dumps(data))[0m
+2026-10-20T11:22:33.0614919Z [36;1mPY[0m
+2026-10-20T11:22:33.0805342Z shell: /usr/bin/bash -e {0}
+2026-10-20T11:22:33.0805764Z env:
+2026-10-20T11:22:33.0806087Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T11:22:33.0806551Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-20T11:22:33.0806999Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T11:22:33.0807405Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T11:22:33.0807880Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T11:22:33.0808291Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-20T11:22:33.0808652Z ##[endgroup]
+2026-10-20T11:22:33.1484386Z ##[group]Run python3 scripts/verify_ci.py
+2026-10-20T11:22:33.1484770Z [36;1mpython3 scripts/verify_ci.py[0m
+2026-10-20T11:22:33.1529444Z shell: /usr/bin/bash -e {0}
+2026-10-20T11:22:33.1529721Z env:
+2026-10-20T11:22:33.1530018Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T11:22:33.1530467Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-20T11:22:33.1531058Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T11:22:33.1531478Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T11:22:33.1531880Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T11:22:33.1532289Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-20T11:22:33.1532643Z ##[endgroup]
+2026-10-20T11:22:33.2236562Z dependencies 1 DEPENDENCY LOCK FAIL: manifest differs from reviewed dependency-lock.sha256
+2026-10-20T11:22:33.2237098Z 
+2026-10-20T11:22:33.2305537Z ##[error]Process completed with exit code 1.
+2026-10-20T11:22:33.2356716Z ##[group]Run python3 scripts/finalize_evidence.py
+2026-10-20T11:22:33.2357141Z [36;1mpython3 scripts/finalize_evidence.py[0m
+2026-10-20T11:22:33.2357470Z [36;1mpython3 - <<'PY'[0m
+2026-10-20T11:22:33.2357729Z [36;1mimport json,os[0m
+2026-10-20T11:22:33.2357991Z [36;1mfrom pathlib import Path[0m
+2026-10-20T11:22:33.2358326Z [36;1massert os.environ['REJECTED_OUTCOME']=='failure'[0m
+2026-10-20T11:22:33.2358731Z [36;1mrow=json.loads(Path('evidence/run.json').read_text())[0m
+2026-10-20T11:22:33.2359223Z [36;1massert row['status']=='failed' and row['failure_category']=='dependency_failed',row[0m
+2026-10-20T11:22:33.2359651Z [36;1mPY[0m
+2026-10-20T11:22:33.2359891Z [36;1mpython3 scripts/evidence_gate.py[0m
+2026-10-20T11:22:33.2403173Z shell: /usr/bin/bash -e {0}
+2026-10-20T11:22:33.2403442Z env:
+2026-10-20T11:22:33.2403722Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T11:22:33.2404187Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-20T11:22:33.2404770Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T11:22:33.2405163Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T11:22:33.2405563Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T11:22:33.2405958Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-20T11:22:33.2406310Z   REJECTED_OUTCOME: failure
+2026-10-20T11:22:33.2406567Z ##[endgroup]
+2026-10-20T11:22:33.3081260Z failed
+2026-10-20T11:22:33.3183125Z ##[group]Run actions/upload-artifact@v4
+2026-10-20T11:22:33.3183476Z with:
+2026-10-20T11:22:33.3183793Z   name: negative-control-845d7e56572216d8f8057f426f989658965605c0-1
+2026-10-20T11:22:33.3184174Z   path: evidence/
+2026-10-20T11:22:33.3184419Z   if-no-files-found: error
+2026-10-20T11:22:33.3184688Z   retention-days: 90
+2026-10-20T11:22:33.3184940Z   compression-level: 6
+2026-10-20T11:22:33.3185190Z   overwrite: false
+2026-10-20T11:22:33.3185439Z   include-hidden-files: false
+2026-10-20T11:22:33.3185732Z env:
+2026-10-20T11:22:33.3186018Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T11:22:33.3186466Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-20T11:22:33.3186909Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T11:22:33.3187311Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T11:22:33.3187717Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-20T11:22:33.3188152Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-20T11:22:33.3188505Z ##[endgroup]
+2026-10-20T11:22:33.4383059Z (node:2125) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-20T11:22:33.4384413Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-20T11:22:33.4430208Z With the provided path, there will be 3 files uploaded
+2026-10-20T11:22:33.4434638Z Artifact name is valid!
+2026-10-20T11:22:33.4436657Z Root directory input is valid!
+2026-10-20T11:22:33.7869453Z Beginning upload of artifact content to blob storage
+2026-10-20T11:22:33.8002645Z (node:2125) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-10-20T11:22:34.0041340Z Uploaded bytes 1508
+2026-10-20T11:22:34.0604227Z Finished uploading artifact content to blob storage!
+2026-10-20T11:22:34.0606453Z SHA256 digest of uploaded artifact zip is 87f2768c6ad291ca2bc08aa64c6ae68eb8462054162c86cd3df81576d5332318
+2026-10-20T11:22:34.0607988Z Finalizing artifact upload
+2026-10-20T11:22:34.3672037Z Artifact negative-control-845d7e56572216d8f8057f426f989658965605c0-1.zip successfully finalized. Artifact ID 12261010873
+2026-10-20T11:22:34.3673206Z Artifact negative-control-845d7e56572216d8f8057f426f989658965605c0-1 has been successfully uploaded! Final size is 1508 bytes. Artifact ID is 12261010873
+2026-10-20T11:22:34.3676413Z Artifact download URL: https://github.com/k-toyoizumi/GPT-Math/actions/runs/39414485885/artifacts/12261010873
+2026-10-20T11:22:34.3843435Z Post job cleanup.
+2026-10-20T11:22:34.4714411Z (node:2137) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-20T11:22:34.4715197Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-20T11:22:34.4911690Z Post job cleanup.
+2026-10-20T11:22:34.5515684Z [command]/usr/bin/git version
+2026-10-20T11:22:34.5555057Z git version 2.55.0
+2026-10-20T11:22:34.5582505Z Temporarily overriding HOME='/home/runner/work/_temp/78fcf0cd-b467-4254-b3ce-56ce33981813' before making global git config changes
+2026-10-20T11:22:34.5583492Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-20T11:22:34.5586158Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/GPT-Math/GPT-Math
+2026-10-20T11:22:34.5626495Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-20T11:22:34.5662823Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-20T11:22:34.5892728Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-20T11:22:34.5923851Z http.https://github.com/.extraheader
+2026-10-20T11:22:34.5934333Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-20T11:22:34.5983333Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-20T11:22:34.6210304Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-20T11:22:34.6250068Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-20T11:22:34.6580516Z Cleaning up orphan processes
+2026-10-20T11:22:34.6784602Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+

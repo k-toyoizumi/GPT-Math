@@ -32,3 +32,7 @@ Date: 2026-10-20. Source: [remediation plan](2026-10-20-remediation-plan.md). Th
 2. Fix dependency gate with positive and negative tests, keeping Lean 4.24.0 / Mathlib v4.24.0.
 3. Wire gates and adopted Lean/Python into workflow, then inspect the **new head SHA's** Actions run.
 4. Do not report CI completion on the basis of this inventory commit.
+
+## Superseding implementation and acceptance record
+
+The initial checklist above is historical. The completed per-task decisions and exact run evidence are in [remediation status](2026-10-20-remediation-status.md) and [G1 acceptance / handoff](2026-10-20-g1-acceptance.md). All remote refs are snapshotted in `2026-10-20-branch-inventory.json`; unadopted mathematical branches remain unexecuted.

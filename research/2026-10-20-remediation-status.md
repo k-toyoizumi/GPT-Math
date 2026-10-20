@@ -1,5 +1,7 @@
 # Remediation ledger and resumption contract
 
+Acceptance: **G1 satisfied on the integration candidate; main merge remains unapproved**. See [G1 acceptance](2026-10-20-g1-acceptance.md).
+
 Scope: infrastructure only. T12/T13 and all new mathematics remain stopped.
 Integration: `ci/lean-coverage-evidence-20261020-0338`. Baseline: `d2c933d2b77df7c858f60ffadf685c37527291c9`.
 
@@ -31,7 +33,7 @@ Integration: `ci/lean-coverage-evidence-20261020-0338`. Baseline: `d2c933d2b77df
 
 `proofs.json` is generated from the compiled environment, not from theorem-name regex. Statement hash is SHA256 of Lean's structural expression representation under the fixed toolchain; source blob SHA and source SHA256 are separate fields.
 
-Artifacts retain 90 days. Before expiry, copy the accepted run's run/proof/experiment/coverage/fault/handoff JSON, CSV, checksums and job log into `research/evidence/<source-sha>/` in a follow-up evidence-only commit; never edit the source SHA in that snapshot. A later documentation commit may reference that accepted source run without claiming its own new mathematical code was checked.
+Artifacts retain 90 days. Before expiry, copy the accepted run's mandatory run/proof/experiment/coverage/fault/handoff fields, CSV, checksums and job log (the optional verbose statement representation can be projected out as documented in evidence/README.md) into `research/evidence/<source-sha>/` in a follow-up evidence-only commit; never edit the source SHA in that snapshot. A later documentation commit may reference that accepted source run without claiming its own new mathematical code was checked.
 
 ## Continuation and stopping
 
