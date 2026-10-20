@@ -5,6 +5,7 @@ import subprocess
 import sys
 import tempfile
 import shutil
+from proof_policy import classify
 
 root = Path.cwd()
 results = []
@@ -33,10 +34,16 @@ with tempfile.TemporaryDirectory() as td:
     broken.write_text('import Mathlib\ntheorem hole : False := by sorry\n#print axioms hole\n')
     p = subprocess.run(['lake', 'env', 'lean', str(broken)], capture_output=True, text=True, check=True)
     assert 'sorryAx' in p.stdout
+    try: classify(['sorryAx'])
+    except ValueError: pass
+    else: raise AssertionError('sorry accepted')
     results.append({'fault':'sorry', 'detected_axiom':'sorryAx', 'output':p.stdout})
     broken.write_text('import Mathlib\naxiom evil : False\ntheorem bad : False := evil\n#print axioms bad\n')
     p = subprocess.run(['lake', 'env', 'lean', str(broken)], capture_output=True, text=True, check=True)
     assert 'evil' in p.stdout
+    try: classify(['evil'])
+    except ValueError: pass
+    else: raise AssertionError('custom axiom accepted')
     results.append({'fault':'custom-axiom','detected_axiom':'evil','output':p.stdout})
     reject('pipefail', ['bash','-o','pipefail','-c','false | tee /dev/null'])
     source = (root/'experiments/verify_certificate.py').read_text().replace('len(rows7) == 35','len(rows7) == 36')

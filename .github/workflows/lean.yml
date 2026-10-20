@@ -26,6 +26,12 @@ jobs:
         env:
           PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
         run: python3 scripts/verify_ci.py
+      - name: Finalize evidence even after setup failure
+        if: always()
+        run: python3 scripts/finalize_evidence.py
+      - name: Validate artifact integrity and run identity
+        if: always()
+        run: python3 scripts/evidence_gate.py
       - name: Save verification evidence including failures
         if: always()
         uses: actions/upload-artifact@v4

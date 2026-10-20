@@ -8,6 +8,7 @@ import re
 import subprocess
 import sys
 import time
+from proof_policy import classify
 
 OUT = Path('evidence')
 OUT.mkdir(exist_ok=True)
@@ -31,10 +32,13 @@ source = git('rev-parse', 'HEAD')
 metadata = {'source_sha': source, 'tree_sha': git('rev-parse', 'HEAD^{tree}'),
             'pr_head_sha': os.getenv('PR_HEAD_SHA'), 'run_id': os.getenv('GITHUB_RUN_ID'),
             'attempt': os.getenv('GITHUB_RUN_ATTEMPT'), 'event': os.getenv('GITHUB_EVENT_NAME'),
-            'started_at': time.time(), 'steps': steps, 'status': 'not_executed'}
+            'started_at': time.time(), 'steps': steps, 'status': 'not_executed',
+            'dependencies': json.loads(Path('lake-manifest.json').read_text())}
 try:
     run('dependencies', [sys.executable, 'scripts/dependency_lock_gate.py'])
     coverage = json.loads(run('coverage', [sys.executable, 'scripts/lean_inventory_gate.py']))
+    coverage['registry'] = json.loads(Path('lean-sources.json').read_text())
+    coverage['verification_command'] = ['lake', 'build']
     write('coverage.json', coverage)
     run('unit-tests', [sys.executable, '-m', 'unittest', 'discover', '-s', 'tests', '-v'])
     experiments = []
@@ -45,46 +49,60 @@ try:
     run('environment', ['bash', '-c', 'lean --version && lake --version && python3 --version'])
     run('lean-build', ['lake', 'build'])
     run('unchanged-lock', ['git', 'diff', '--exit-code', '--', 'lake-manifest.json'])
-    # Explicit declaration list is checked against source at each run. No prior run is reused.
-    proofs = []
-    imports = []
-    queries = []
-    for path in coverage['tracked_lean_files']:
-        imports.append('import ' + path[:-5].replace('/', '.'))
-        text = Path(path).read_text()
-        text = re.sub(r'/\-.*?\-/', '', text, flags=re.S)
-        text = re.sub(r'--[^\n]*', '', text)
-        namespace = ''
-        for line in text.splitlines():
-            m = re.match(r'namespace (\w+)', line)
-            if m: namespace = m[1] + '.'
-            m = re.match(r'theorem (\w+)', line)
-            if m:
-                name = namespace + m[1]
-                queries.append('#print axioms ' + name)
-                proofs.append({'name': name, 'source': path, 'blob_sha': git('hash-object', path),
-                               'source_sha256': sha(path), 'source_sha': source,
-                               'run_id': metadata['run_id'], 'attempt': metadata['attempt']})
+    # Enumerate compiled environment declarations by defining module, not source regex.
+    registry = json.loads(Path('lean-sources.json').read_text())
+    modules = {p[:-5].replace('/', '.'): p for p, entry in registry.items() if entry['status'] == 'adopted'}
+    imports = ['import ' + name for name in modules]
     audit = Path('ProofAudit.lean')
-    audit.write_text('\n'.join(imports + queries) + '\n')
+    audit.write_text('\n'.join(imports) + '''
+open Lean in
+run_cmd do
+  let env ← getEnv
+  let modules : List String := MODULES
+  for (name, info) in env.constants.toList do
+    let some idx := env.getModuleIdxFor? name | continue
+    let modName := env.header.moduleNames[idx.toNat]!
+    if modules.contains modName.toString then
+      match info with
+      | .thmInfo _ =>
+        let axioms ← Lean.collectAxioms name
+        let row := Json.mkObj [
+          ("name", toJson name.toString),
+          ("module", toJson modName.toString),
+          ("statement", toJson (reprStr info.type)),
+          ("axioms", toJson (axioms.map Name.toString))]
+        logInfo m!"AUDIT_JSON {row.compress}"
+      | _ => pure ()
+'''.replace('MODULES', '[' + ', '.join(json.dumps(m) for m in modules) + ']'))
     output = run('axioms', ['lake', 'env', 'lean', str(audit)])
     audit.unlink()
-    allowed = {'propext', 'Classical.choice', 'Quot.sound', 'Lean.ofReduceBool', 'Lean.trustCompiler'}
-    for proof in proofs:
-        name = re.escape(proof['name'])
-        match = re.search(r"'" + name + r"' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)", output, re.S)
-        if not match: raise ValueError('missing axiom result: ' + proof['name'])
-        axioms = [a.strip() for a in (match.group(1) or '').split(',') if a.strip()]
-        if set(axioms) - allowed: raise ValueError('unapproved axioms: ' + repr(axioms))
-        proof['axioms'] = axioms
-        proof['trust'] = 'native-assisted' if any(a.startswith('Lean.') for a in axioms) else 'kernel-checked'
-    if not proofs: raise ValueError('empty theorem audit')
+    proofs = []
+    for line in output.splitlines():
+        if 'AUDIT_JSON ' not in line: continue
+        proof = json.loads(line.split('AUDIT_JSON ', 1)[1])
+        path = modules[proof.pop('module')]
+        proof.update(source=path, blob_sha=git('hash-object', path), source_sha256=sha(path),
+                     source_sha=source, run_id=metadata['run_id'], attempt=metadata['attempt'],
+                     statement_hash=hashlib.sha256(proof['statement'].encode()).hexdigest(),
+                     trust=classify(proof['axioms']))
+        proofs.append(proof)
+    if not proofs or set(p['source'] for p in proofs) != set(modules.values()):
+        raise ValueError('missing compiled theorem audit for adopted module')
+    proofs.sort(key=lambda p: p['name'])
     write('proofs.json', proofs)
     run('fault-injection', [sys.executable, 'scripts/fault_injection.py'])
+    from handoff import record
+    result_hash = hashlib.sha256((OUT/'proofs.json').read_bytes() + (OUT/'experiments.json').read_bytes()).hexdigest()
+    for _ in range(2):
+        record(OUT/'handoff.json', 'T11', source, result_hash, 'success', 'stop; await explicit research authorization')
     metadata['status'] = 'success'
 except Exception as exc:
     metadata['status'] = 'failed'
     metadata['failure'] = str(exc)
+    last = steps[-1]['name'] if steps else ''
+    metadata['failure_category'] = ('dependency_failed' if last in ('dependencies','unchanged-lock') else
+        'inventory_failed' if last == 'coverage' else 'lean_failed' if last in ('lean-build','axioms') else
+        'python_failed' if last in ('unit-tests','fixed_first_denominator','first_denominator_offset','verify_certificate') else 'artifact_failed')
 finally:
     metadata['finished_at'] = time.time()
     write('run.json', metadata)

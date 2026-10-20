@@ -74,10 +74,12 @@ def denominators(u, a, s):
     assert n % s == 0 and (s + 1) % (4 * u * a) == 0
     alpha, v = (s + 1) // (4 * u * a), n // s
     x, y, z = alpha * u * v, P * alpha * u * a, P * alpha * v * a
+    assert min(x, y, z) > 0
     assert 4 * x * y * z == P * (x * y + x * z + y * z)
     return x, y, z
 
 def main():
+    assert factor(P) == [(P, 1)], "P must be prime"
     rows7 = check(7)
     assert len(rows7) == 35
     assert sum(r["divisor_count"] for r in rows7) == 426
