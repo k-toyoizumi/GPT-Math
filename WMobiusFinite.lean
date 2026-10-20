@@ -115,12 +115,19 @@ theorem finite_double_reconstruct (A : BiAF) (u a : ℕ) (ha : a ≠ 0) :
       ∑ x ∈ u.divisorsAntidiagonal,
         ∑ y ∈ a.divisorsAntidiagonal,
           weightedZeta x.1 * weightedZeta y.1 * innerKernel A x.2 y.2 := by
-  rw [← outer_reconstruct A]
-  simp only [ArithmeticFunction.smul_apply, Finset.sum_apply, Pi.smul_apply, smul_eq_mul]
-  apply Finset.sum_congr rfl
-  intro x hx
-  rw [← inner_reconstruct A x.2 a ha, ArithmeticFunction.mul_apply]
-  simp [Finset.mul_sum, mul_assoc]
+  calc
+    A u a = (weightedZeta • outerKernel A : BiAF) u a := by
+      exact congrArg (fun B : BiAF => B u a) (outer_reconstruct A).symm
+    _ = ∑ x ∈ u.divisorsAntidiagonal,
+          weightedZeta x.1 * outerKernel A x.2 a := by
+      simp only [ArithmeticFunction.smul_apply, Finset.sum_apply, Pi.smul_apply, smul_eq_mul]
+    _ = ∑ x ∈ u.divisorsAntidiagonal,
+          ∑ y ∈ a.divisorsAntidiagonal,
+            weightedZeta x.1 * weightedZeta y.1 * innerKernel A x.2 y.2 := by
+      apply Finset.sum_congr rfl
+      intro x hx
+      rw [← inner_reconstruct A x.2 a ha, ArithmeticFunction.mul_apply]
+      simp [Finset.mul_sum, mul_assoc]
 
 #print axioms WMobiusFinite.divideByN_mul
 #print axioms WMobiusFinite.weightedZeta_mul_weightedMoebius
