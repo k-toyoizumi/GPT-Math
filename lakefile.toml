@@ -1,6 +1,6 @@
 name = "GPTMath"
 version = "0.1.0"
-defaultTargets = ["XuGeneralAudit", "XuTheorem41Audit", "TypeIIReconstruction", "TypeIIDepthSeven", "ProgressionCompleteness", "TypeIIDivisorComplete"]
+defaultTargets = ["XuGeneralAudit", "XuTheorem41Audit", "TypeIIReconstruction", "TypeIIDepthSeven", "ProgressionCompleteness", "TypeIIDivisorComplete", "WMobiusFinite"]
 
 [[lean_lib]]
 name = "XuGeneralAudit"
@@ -24,3 +24,6 @@ name = "ProgressionCompleteness"
 
 [[lean_lib]]
 name = "TypeIIDivisorComplete"
+
+[[lean_lib]]
+name = "WMobiusFinite"
