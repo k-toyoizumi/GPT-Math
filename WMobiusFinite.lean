@@ -102,8 +102,8 @@ def innerKernel (A : BiAF) (r : ℕ) : AF :=
 
 theorem inner_reconstruct (A : BiAF) (r a : ℕ) (ha : a ≠ 0) :
     (weightedZeta * innerKernel A r) a = outerKernel A r a := by
-  rw [reconstruct]
-  simp [innerSource, ha]
+  have h := congrArg (fun f : AF => f a) (reconstruct (innerSource A r))
+  simpa [innerKernel, innerSource, ha] using h
 
 /--
 Exact finite two-variable weighted Möbius inversion, written on divisor
@@ -116,9 +116,10 @@ theorem finite_double_reconstruct (A : BiAF) (u a : ℕ) (ha : a ≠ 0) :
         ∑ y ∈ a.divisorsAntidiagonal,
           weightedZeta x.1 * weightedZeta y.1 * innerKernel A x.2 y.2 := by
   rw [← outer_reconstruct A]
-  simp only [ArithmeticFunction.smul_apply, Pi.smul_apply, smul_eq_mul]
-  simp_rw [← inner_reconstruct A _ a ha]
-  simp only [ArithmeticFunction.mul_apply]
+  simp only [ArithmeticFunction.smul_apply, Finset.sum_apply, Pi.smul_apply, smul_eq_mul]
+  apply Finset.sum_congr rfl
+  intro x hx
+  rw [← inner_reconstruct A x.2 a ha, ArithmeticFunction.mul_apply]
   simp [Finset.mul_sum, mul_assoc]
 
 #print axioms WMobiusFinite.divideByN_mul
