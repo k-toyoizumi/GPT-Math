@@ -416,8 +416,12 @@ theorem innerKernel_wArithmetic_prime_prime
     rw [show p = p ^ 1 by simp, Nat.sum_divisors_prime_pow hp]
     simp
   rw [innerKernel_wArithmetic_explicit p p hp.ne_zero]
-  simp [Nat.sum_divisorsAntidiagonal, hsum,
-    weightedMoebius, divideByN, hp, hp.ne_zero]
+  rw [Nat.sum_divisorsAntidiagonal]
+  rw [hsum]
+  simp only [Nat.div_one, Nat.div_self hp.ne_zero]
+  rw [Nat.sum_divisorsAntidiagonal, Nat.sum_divisorsAntidiagonal]
+  rw [hsum, hsum]
+  simp [weightedMoebius, divideByN, hp, hp.ne_zero]
   ring
 
 /-- The actual normalized residual-kernel coefficient at exponent pair
