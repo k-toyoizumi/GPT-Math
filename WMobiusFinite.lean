@@ -13,7 +13,7 @@ open ArithmeticFunction
 open scoped ArithmeticFunction
 
 abbrev AF := ArithmeticFunction ℚ
-abbrev BiAF := ArithmeticFunction AF
+abbrev BiAF := ArithmeticFunction (ℕ → ℚ)
 
 /-- Divide the value of an arithmetic function at `n` by `n`.
 At zero this is zero, as required by `ArithmeticFunction`. -/
@@ -45,6 +45,7 @@ theorem divideByN_mul (f g : AF) :
     exact_mod_cast right_ne_zero_of_mul hprod
   have hcast : (x.1 : ℚ) * (x.2 : ℚ) = (n : ℚ) := by
     exact_mod_cast hmul
+  simp only [divideByN_apply]
   rw [← hcast]
   field_simp
 
@@ -86,31 +87,37 @@ theorem reconstruct (f : AF) :
 def outerKernel (A : BiAF) : BiAF :=
   (weightedMoebius • A : BiAF)
 
-/-- Remove the weighted zeta factor in the second coordinate as well. -/
-def innerKernel (A : BiAF) (r : ℕ) : AF :=
-  kernel (outerKernel A r)
-
 theorem outer_reconstruct (A : BiAF) :
     (weightedZeta • outerKernel A : BiAF) = A := by
-  simp [outerKernel, ← mul_smul]
+  rw [outerKernel, ← ArithmeticFunction.mul_smul']
+  simp
 
-theorem inner_reconstruct (A : BiAF) (r : ℕ) :
-    weightedZeta * innerKernel A r = outerKernel A r :=
-  reconstruct (outerKernel A r)
+/-- The second-coordinate slice, with the irrelevant zero index normalized. -/
+def innerSource (A : BiAF) (r : ℕ) : AF :=
+  ⟨fun a => if a = 0 then 0 else outerKernel A r a, by simp⟩
+
+/-- Remove the weighted zeta factor in the second coordinate as well. -/
+def innerKernel (A : BiAF) (r : ℕ) : AF :=
+  kernel (innerSource A r)
+
+theorem inner_reconstruct (A : BiAF) (r a : ℕ) (ha : a ≠ 0) :
+    (weightedZeta * innerKernel A r) a = outerKernel A r a := by
+  rw [reconstruct]
+  simp [innerSource, ha]
 
 /--
 Exact finite two-variable weighted Möbius inversion, written on divisor
 antidiagonals.  In each pair `x`, `x.1 * x.2` is the ambient index:
 `x.1` is the harmonic quotient and `x.2` is the kernel index.
 -/
-theorem finite_double_reconstruct (A : BiAF) (u a : ℕ) :
+theorem finite_double_reconstruct (A : BiAF) (u a : ℕ) (ha : a ≠ 0) :
     A u a =
       ∑ x ∈ u.divisorsAntidiagonal,
         ∑ y ∈ a.divisorsAntidiagonal,
           weightedZeta x.1 * weightedZeta y.1 * innerKernel A x.2 y.2 := by
   rw [← outer_reconstruct A]
-  simp only [ArithmeticFunction.smul_apply]
-  simp_rw [inner_reconstruct A]
+  simp only [ArithmeticFunction.smul_apply, Pi.smul_apply, smul_eq_mul]
+  simp_rw [← inner_reconstruct A _ a ha]
   simp only [ArithmeticFunction.mul_apply]
   simp [Finset.mul_sum, mul_assoc]
 
