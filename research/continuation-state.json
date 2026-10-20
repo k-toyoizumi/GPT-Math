@@ -1,17 +1,23 @@
 {
   "seen": [
     "0f442701d573a56fc7a2f27f34b111c5e3c2eb7f5c3bca8e37e438a8e42508c0",
-    "0c0cb72809e76590cb3c78d49d3c6396ab81b29f02ab58037c1110531a6c1114"
+    "0c0cb72809e76590cb3c78d49d3c6396ab81b29f02ab58037c1110531a6c1114",
+    "7cd2b7c10bb9a8d96a302989fe26ff151254fd605987952e4081c36251fedabf"
   ],
-  "attempts": 3,
-  "progress_count": 2,
-  "task_id": "T12-C",
-  "source_sha": "3802f98cb272791ba6c0dc8d1a9cc21b7648804f",
-  "result_hash": "85b42f21dab393aef2fcb49987d0851596f18b63a090ea0db27fe919468a456a",
+  "attempts": 4,
+  "progress_count": 3,
+  "task_id": "T12-D",
+  "source_sha": "65cd80e79ed8b28e8eba0450355945d51e2c530e",
+  "result_hash": "9d5fbd957bde6912ad8b796b268b21b18baf3e8cfe8dac2df6d1e651930aea88",
   "status": "success",
-  "next_action": "formalize and run the finite two-variable Mobius-inversion identity; require same-source-SHA Actions evidence before any verified label",
+  "next_action": "specialize the verified finite identity to the concrete W weight and state the remaining analytic hypotheses; do not claim the asymptotic until absolute summability, logarithmic moments, tails, and Euler product are proved",
   "duplicate": false,
   "publication_status": "published_to_research_branch",
-  "publication_commit": "ef8ddf021b3fd02b09038fe20fd039ffdca28493",
-  "recovery_status": "T12A/T12B ZIPs and original rejection text unavailable; this is a new independent T12-C result"
+  "publication_commit": "fbb1226d305b017354b8d53c3431f5a30259f811",
+  "verified_head_sha": "e327a16208f71773cc33e68d76da8322b65a4dc2",
+  "verified_merge_sha": "15344452bf6a02c425a3ce806559ef62153bdba4",
+  "actions_run_id": 39458226341,
+  "actions_attempt": 1,
+  "verification_artifact_id": 12282050743,
+  "recovery_status": "T12A/T12B ZIPs and original rejection text unavailable; T12-D is a new independently backed-up and published result"
 }
