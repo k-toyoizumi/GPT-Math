@@ -160,9 +160,109 @@ theorem finite_wWeight_reconstruct (u a : ℕ) (ha : a ≠ 0) :
             innerKernel wArithmetic x.2 y.2 := by
   simpa [wArithmetic] using finite_double_reconstruct wArithmetic u a ha
 
+/-!
+The following rational identities are the local algebra needed for the
+residual kernel.  For an odd prime represented by a rational variable `p`,
+the normalized local weight has axis value `1 / (p - 1)`.  Applying the
+weighted Möbius difference gives the axis and diagonal coefficients below.
+The hypotheses exclude only the vanishing denominators; primality and the
+passage to an infinite Euler product are deliberately outside these lemmas.
+-/
+
+/-- Residual-kernel coefficient at exponent pair `(1,0)` or `(0,1)`. -/
+def oddAxisCoeff (p : ℚ) : ℚ :=
+  1 / (p * (p - 1))
+
+/-- Residual-kernel coefficient at exponent pair `(1,1)`. -/
+def oddDiagonalCoeff (p : ℚ) : ℚ :=
+  -(p + 1) / (p ^ 2 * (p - 1))
+
+theorem odd_axis_from_weighted_moebius (p : ℚ) (hp0 : p ≠ 0) (hp1 : p ≠ 1) :
+    1 / (p - 1) - 1 / p = oddAxisCoeff p := by
+  unfold oddAxisCoeff
+  field_simp [hp0, sub_ne_zero.mpr hp1]
+  <;> ring
+
+theorem odd_diagonal_from_weighted_moebius
+    (p : ℚ) (hp0 : p ≠ 0) (hp1 : p ≠ 1) :
+    -(1 / p) * (1 / (p - 1)) - (1 / p) * (1 / (p - 1)) +
+        (1 / p) ^ 2 =
+      oddDiagonalCoeff p := by
+  unfold oddDiagonalCoeff
+  field_simp [hp0, sub_ne_zero.mpr hp1]
+  <;> ring
+
+/-- The signed odd-prime local mass is `1 + p⁻²`. -/
+theorem odd_local_mass (p : ℚ) (hp0 : p ≠ 0) (hp1 : p ≠ 1) :
+    1 + 2 * oddAxisCoeff p + oddDiagonalCoeff p = 1 + 1 / p ^ 2 := by
+  unfold oddAxisCoeff oddDiagonalCoeff
+  field_simp [hp0, sub_ne_zero.mpr hp1]
+  <;> ring
+
+/-- Excess of the absolute local mass over one at an odd prime. -/
+def oddAbsoluteExcess (p : ℚ) : ℚ :=
+  2 / (p * (p - 1)) + (p + 1) / (p ^ 2 * (p - 1))
+
+theorem oddAbsoluteExcess_eq (p : ℚ) (hp0 : p ≠ 0) (hp1 : p ≠ 1) :
+    oddAbsoluteExcess p = (3 * p + 1) / (p ^ 2 * (p - 1)) := by
+  unfold oddAbsoluteExcess
+  field_simp [hp0, sub_ne_zero.mpr hp1]
+  <;> ring
+
+/-- A simple summable comparison target for the odd-prime absolute factors. -/
+theorem oddAbsoluteExcess_le (p : ℚ) (hp : 2 ≤ p) :
+    oddAbsoluteExcess p ≤ 8 / p ^ 2 := by
+  have hp0 : 0 < p := lt_of_lt_of_le (by norm_num) hp
+  have hp1 : 0 < p - 1 := sub_pos.mpr (lt_of_lt_of_le (by norm_num) hp)
+  rw [oddAbsoluteExcess_eq p (ne_of_gt hp0) (by nlinarith)]
+  have hnum : 3 * p + 1 ≤ 8 * (p - 1) := by
+    nlinarith
+  have hden : 0 < p ^ 2 * (p - 1) :=
+    mul_pos (pow_pos hp0 2) hp1
+  calc
+    (3 * p + 1) / (p ^ 2 * (p - 1))
+        ≤ (8 * (p - 1)) / (p ^ 2 * (p - 1)) :=
+      (div_le_div_iff_of_pos_right hden).2 hnum
+    _ = 8 / p ^ 2 := by
+      field_simp [ne_of_gt hp0, ne_of_gt hp1]
+
+/-- At `p = 2`, the normalized axis coefficient vanishes. -/
+theorem two_axis_from_weighted_moebius :
+    (1 / 2 : ℚ) - 1 / 2 = 0 := by
+  norm_num
+
+/-- At `p = 2`, the only nonzero off-origin coefficient is diagonal. -/
+theorem two_diagonal_from_weighted_moebius :
+    -(1 / 2 : ℚ) * (1 / 2) - (1 / 2) * (1 / 2) + (1 / 2) ^ 2 =
+      -(1 / 4) := by
+  norm_num
+
+/-- The normalized two-adic signed local mass is `3/4`. -/
+theorem two_local_mass :
+    (1 : ℚ) - 1 / 4 = 3 / 4 := by
+  norm_num
+
+/--
+Conditional constant transport: a global normalization `1/2`, the two-adic
+factor `3/4`, and an odd-prime product `12/π²` give `9/(2π²)`.
+This theorem does not prove that the odd-prime Euler product has that value.
+-/
+theorem candidate_constant_transfer :
+    (1 / 2 : ℝ) * (3 / 4) * (12 / Real.pi ^ 2) =
+      9 / (2 * Real.pi ^ 2) := by
+  have hpi : Real.pi ^ 2 ≠ 0 := pow_ne_zero 2 Real.pi_ne_zero
+  field_simp [hpi]
+  <;> ring
+
 #print axioms WMobiusFinite.divideByN_mul
 #print axioms WMobiusFinite.weightedZeta_mul_weightedMoebius
 #print axioms WMobiusFinite.finite_double_reconstruct
 #print axioms WMobiusFinite.finite_wWeight_reconstruct
+#print axioms WMobiusFinite.odd_axis_from_weighted_moebius
+#print axioms WMobiusFinite.odd_diagonal_from_weighted_moebius
+#print axioms WMobiusFinite.odd_local_mass
+#print axioms WMobiusFinite.oddAbsoluteExcess_le
+#print axioms WMobiusFinite.two_local_mass
+#print axioms WMobiusFinite.candidate_constant_transfer
 
 end WMobiusFinite
