@@ -152,14 +152,14 @@ theorem normalizedWWeight_axis_of_two_not_dvd
     normalizedWWeight n 1 = 1 / (Nat.totient n : ℚ) := by
   have hcop : Nat.Coprime 4 n :=
     (Nat.prime_two.coprime_iff_not_dvd.mpr h2n).pow_left 2
-  have htot : (Nat.totient n : ℚ) ≠ 0 := by
-    exact_mod_cast (Nat.totient_pos.mpr (Nat.pos_of_ne_zero hn)).ne'
   have htot4 : Nat.totient 4 = 2 := by
-    norm_num [Nat.totient]
+    rw [show 4 = 2 ^ 2 by norm_num,
+      Nat.totient_prime_pow Nat.prime_two (by norm_num)]
+    norm_num
   rw [normalizedWWeight]
   simp [wWeight, hn]
   rw [Nat.totient_mul hcop, htot4]
-  norm_num [htot]
+  ring
 
 /-- For an odd prime power, the normalized concrete axis value is the local
 factor used in the residual-kernel table. -/
