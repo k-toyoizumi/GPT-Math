@@ -433,7 +433,8 @@ theorem normalized_innerKernel_wArithmetic_odd_prime_axis
       (normalizedWWeight_odd_prime_pow_axis
         (p := p) (e := 1) hp h2p (by norm_num))
   have horigin : normalizedWWeight 1 1 = 1 := by
-    norm_num [normalizedWWeight, wWeight]
+    simpa using
+      (normalizedWWeight_axis_of_two_not_dvd 1 (by norm_num) (by norm_num))
   rw [innerKernel_wArithmetic_prime_one hp]
   rw [show 2 * (wWeight p 1 - (1 / (p : ℚ)) * wWeight 1 1) =
       normalizedWWeight p 1 -
@@ -441,6 +442,8 @@ theorem normalized_innerKernel_wArithmetic_odd_prime_axis
       simp only [normalizedWWeight]
       ring]
   rw [haxis, horigin]
+  norm_num only [mul_one]
+  rw [Nat.cast_sub hp.one_lt.le]
   exact odd_axis_from_weighted_moebius (p : ℚ) hpQ0 hpQ1
 
 /-- The actual normalized residual-kernel coefficient at exponent pair
@@ -456,7 +459,8 @@ theorem normalized_innerKernel_wArithmetic_one_odd_prime_axis
       (normalizedWWeight_one_odd_prime_pow_axis
         (p := p) (e := 1) hp h2p (by norm_num))
   have horigin : normalizedWWeight 1 1 = 1 := by
-    norm_num [normalizedWWeight, wWeight]
+    simpa using
+      (normalizedWWeight_axis_of_two_not_dvd 1 (by norm_num) (by norm_num))
   rw [innerKernel_wArithmetic_one_prime hp]
   rw [show 2 * (wWeight 1 p - (1 / (p : ℚ)) * wWeight 1 1) =
       normalizedWWeight 1 p -
@@ -464,6 +468,8 @@ theorem normalized_innerKernel_wArithmetic_one_odd_prime_axis
       simp only [normalizedWWeight]
       ring]
   rw [haxis, horigin]
+  norm_num only [mul_one]
+  rw [Nat.cast_sub hp.one_lt.le]
   exact odd_axis_from_weighted_moebius (p : ℚ) hpQ0 hpQ1
 
 /-- The actual normalized residual-kernel coefficient at exponent pair
@@ -484,10 +490,12 @@ theorem normalized_innerKernel_wArithmetic_odd_prime_diagonal
       (normalizedWWeight_one_odd_prime_pow_axis
         (p := p) (e := 1) hp h2p (by norm_num))
   have hdiag : normalizedWWeight p p = 0 := by
-    exact normalizedWWeight_same_prime_pow_eq_zero
-      (p := p) (e := 1) (f := 1) hp (by norm_num) (by norm_num)
+    simpa using
+      (normalizedWWeight_same_prime_pow_eq_zero
+        (p := p) (e := 1) (f := 1) hp (by norm_num) (by norm_num))
   have horigin : normalizedWWeight 1 1 = 1 := by
-    norm_num [normalizedWWeight, wWeight]
+    simpa using
+      (normalizedWWeight_axis_of_two_not_dvd 1 (by norm_num) (by norm_num))
   rw [innerKernel_wArithmetic_prime_prime hp]
   rw [show
       2 * (wWeight p p -
@@ -501,8 +509,9 @@ theorem normalized_innerKernel_wArithmetic_odd_prime_diagonal
       simp only [normalizedWWeight]
       ring]
   rw [hdiag, hright, hleft, horigin]
-  simpa only [zero_sub] using
-    odd_diagonal_from_weighted_moebius (p : ℚ) hpQ0 hpQ1
+  norm_num only [zero_sub, mul_one]
+  rw [Nat.cast_sub hp.one_lt.le]
+  exact odd_diagonal_from_weighted_moebius (p : ℚ) hpQ0 hpQ1
 
 
 end WMobiusFinite
