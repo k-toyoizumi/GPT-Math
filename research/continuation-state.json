@@ -11,6 +11,7 @@
   "status": "success",
   "next_action": "formalize and run the finite two-variable Mobius-inversion identity; require same-source-SHA Actions evidence before any verified label",
   "duplicate": false,
-  "publication_status": "not_attempted_after_prior_publication_block",
+  "publication_status": "published_to_research_branch",
+  "publication_commit": "ef8ddf021b3fd02b09038fe20fd039ffdca28493",
   "recovery_status": "T12A/T12B ZIPs and original rejection text unavailable; this is a new independent T12-C result"
 }
