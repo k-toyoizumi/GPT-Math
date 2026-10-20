@@ -3,6 +3,7 @@
 
 A passing check is not evidence that a GitHub Actions run invoked this gate.
 """
+import hashlib
 import json
 import re
 import sys
@@ -31,6 +32,8 @@ def check(root: Path):
     path = root / "lake-manifest.json"
     if not path.is_file():
         raise ValueError("missing lake-manifest.json")
+    if hashlib.sha256(path.read_bytes()).hexdigest() != (root / "dependency-lock.sha256").read_text().strip():
+        raise ValueError("manifest differs from reviewed dependency-lock.sha256")
     data = json.loads(path.read_text(encoding="utf-8"))
     packages = data.get("packages")
     if not isinstance(packages, list) or not packages:

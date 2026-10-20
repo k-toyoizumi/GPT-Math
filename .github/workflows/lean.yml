@@ -3,11 +3,17 @@ on:
   push:
   pull_request:
   workflow_dispatch:
+permissions:
+  contents: read
 jobs:
   lean:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
       - name: Install elan and Lean
         run: |
           curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
@@ -15,14 +21,16 @@ jobs:
       - name: Verify pinned dependency manifest
         run: python3 scripts/dependency_lock_gate.py
       - name: Resolve Mathlib dependencies from lock
-        run: |
-          ~/.elan/bin/lake exe cache get
-          git diff --exit-code -- lake-manifest.json
-      - name: Build and check all proofs
-        run: ~/.elan/bin/lake build XuGeneralAudit XuTheorem41Audit TypeIIReconstruction TypeIIDepthSeven
-      - name: Reject incomplete proofs and custom axioms
-        run: |
-          if grep -nE '(^|[^[:alnum:]_])(sorry|admit|axiom)([^[:alnum:]_]|$)' XuGeneralAudit.lean XuTheorem41Audit.lean TypeIIReconstruction.lean TypeIIDepthSeven.lean; then
-            echo "Incomplete proof or custom axiom detected"
-            exit 1
-          fi
+        run: lake exe cache get
+      - name: Verify adopted sources and save evidence
+        env:
+          PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: python3 scripts/verify_ci.py
+      - name: Save verification evidence including failures
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: verification-${{ github.sha }}-${{ github.run_attempt }}
+          path: evidence/
+          if-no-files-found: error
+          retention-days: 90

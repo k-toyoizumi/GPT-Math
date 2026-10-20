@@ -1,0 +1,26 @@
+{
+  "ProgressionCompleteness.lean": {
+    "status": "adopted",
+    "target": "ProgressionCompleteness"
+  },
+  "TypeIIDepthSeven.lean": {
+    "status": "adopted",
+    "target": "TypeIIDepthSeven"
+  },
+  "TypeIIDivisorComplete.lean": {
+    "status": "adopted",
+    "target": "TypeIIDivisorComplete"
+  },
+  "TypeIIReconstruction.lean": {
+    "status": "adopted",
+    "target": "TypeIIReconstruction"
+  },
+  "XuGeneralAudit.lean": {
+    "status": "adopted",
+    "target": "XuGeneralAudit"
+  },
+  "XuTheorem41Audit.lean": {
+    "status": "adopted",
+    "target": "XuTheorem41Audit"
+  }
+}

@@ -27,7 +27,20 @@ def inventory(root: Path):
     missing = [name for name in targets if Path(name.replace(".", "/") + ".lean") not in paths]
     if missing:
         raise ValueError("Lake target has no tracked Lean source: " + ", ".join(missing))
-    return [p.as_posix() for p in paths], targets
+    registry = json.loads((root / "lean-sources.json").read_text())
+    if set(registry) != {p.as_posix() for p in paths}:
+        raise ValueError("tracked Lean sources differ from explicit registry")
+    adopted = []
+    for path, entry in registry.items():
+        if entry["status"] == "adopted":
+            if entry["target"] not in targets:
+                raise ValueError("adopted source has no build target")
+            adopted.append(entry["target"])
+        elif entry["status"] not in ("draft", "excluded") or not entry.get("reason"):
+            raise ValueError("invalid source classification")
+    if set(config.get("defaultTargets", [])) != set(adopted):
+        raise ValueError("defaultTargets differ from adopted targets")
+    return [p.as_posix() for p in paths], adopted
 
 
 def main():
