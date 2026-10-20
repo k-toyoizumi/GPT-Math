@@ -162,7 +162,10 @@ theorem innerKernel_explicit (A : BiAF) (r t : ℕ) (ht : t ≠ 0) :
   have hyprod_ne : y.1 * y.2 ≠ 0 := by
     simpa [hyprod] using ht
   have hy2 : y.2 ≠ 0 := right_ne_zero_of_mul hyprod_ne
-  simp only [innerSource, hy2, if_false, outerKernel,
+  have hsource : innerSource A r y.2 = outerKernel A r y.2 := by
+    simp [innerSource, hy2]
+  rw [hsource]
+  simp only [outerKernel,
     ArithmeticFunction.smul_apply, Finset.sum_apply, Pi.smul_apply,
     smul_eq_mul]
   simp [Finset.mul_sum, mul_assoc]
