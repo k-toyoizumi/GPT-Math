@@ -4,7 +4,7 @@ import hashlib
 import json
 import os
 from pathlib import Path
-import re
+import signal
 import subprocess
 import sys
 import time
@@ -20,13 +20,23 @@ def write(name, value):
     (OUT / name).write_text(json.dumps(value, indent=2) + '\n')
 steps = []
 def run(name, command):
-    p = subprocess.run(command, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-    (OUT / (name + '.log')).write_text(p.stdout)
-    print(name, p.returncode, p.stdout[-2500:], flush=True)
+    print('START', name, flush=True)
+    with subprocess.Popen(command, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
+                          start_new_session=True) as p:
+        try:
+            output, _ = p.communicate(timeout=90 if name == 'axioms' else 300)
+        except subprocess.TimeoutExpired:
+            os.killpg(p.pid, signal.SIGKILL)
+            output, _ = p.communicate()
+            (OUT / (name + '.log')).write_text(output + '\nTIMEOUT: process group terminated\n')
+            steps.append({'name': name, 'command': command, 'exit_code': 124})
+            raise RuntimeError(name + ': timeout; inspect partial log')
+    (OUT / (name + '.log')).write_text(output)
+    print(name, p.returncode, output[-2500:], flush=True)
     steps.append({'name': name, 'command': command, 'exit_code': p.returncode})
     if p.returncode:
         raise RuntimeError(name)
-    return p.stdout
+    return output
 
 source = git('rev-parse', 'HEAD')
 metadata = {'source_sha': source, 'tree_sha': git('rev-parse', 'HEAD^{tree}'),
@@ -44,7 +54,12 @@ try:
     experiments = []
     for path in sorted(Path('experiments').glob('*.py')):
         output = run(path.stem, [sys.executable, str(path)])
-        experiments.append({'source': str(path), 'sha256': sha(path), 'arithmetic': 'exact integer/rational', 'output': output})
+        specs = {
+            'first_denominator_offset': {'prime_bound_exclusive': 100000, 'prime_residue_mod24': 1, 'offset_inclusive': [0,15], 'method': 'factorization and divisor-pair search; exact rational witness checks'},
+            'fixed_first_denominator': {'prime_bound_exclusive': 100000, 'prime_residue_mod24': 1, 'first_denominator': '(p+3)//4', 'method': 'independent factor criterion and exact rational witness checks'},
+            'verify_certificate': {'p': 670849, 'u_a_inclusive': [1,7], 'boundary_depth': 8, 'method': 'factor-generated divisors vs sqrt trial division vs arithmetic progression; prime and positive-denominator checks'}
+        }
+        experiments.append({'parameters': specs[path.stem], 'source': str(path), 'sha256': sha(path), 'arithmetic': 'exact integer/rational', 'output': output})
     write('experiments.json', experiments)
     run('environment', ['bash', '-c', 'lean --version && lake --version && python3 --version'])
     run('lean-build', ['lake', 'build'])
