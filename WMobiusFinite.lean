@@ -384,8 +384,12 @@ theorem innerKernel_wArithmetic_prime_one
     rw [show p = p ^ 1 by simp, Nat.sum_divisors_prime_pow hp]
     simp [Finset.sum_range_succ]
   rw [innerKernel_wArithmetic_explicit p 1 (by norm_num)]
-  simp [Nat.sum_divisorsAntidiagonal, hsum,
-    weightedMoebius, divideByN, hp, hp.ne_zero]
+  simp only [Nat.divisorsAntidiagonal_one, Finset.sum_singleton]
+  rw [Nat.sum_divisorsAntidiagonal
+    (fun x1 x2 => weightedMoebius 1 * weightedMoebius x1 * wWeight x2 1)]
+  rw [hsum]
+  simp [weightedMoebius, divideByN,
+    ArithmeticFunction.moebius_apply_prime hp, Nat.div_self hp.pos, hp.ne_zero]
   ring
 
 /-- The analogous two-term residual-kernel formula on the second axis. -/
@@ -398,8 +402,12 @@ theorem innerKernel_wArithmetic_one_prime
     rw [show p = p ^ 1 by simp, Nat.sum_divisors_prime_pow hp]
     simp [Finset.sum_range_succ]
   rw [innerKernel_wArithmetic_explicit 1 p hp.ne_zero]
-  simp [Nat.sum_divisorsAntidiagonal, hsum,
-    weightedMoebius, divideByN, hp, hp.ne_zero]
+  simp only [Nat.divisorsAntidiagonal_one, Finset.sum_singleton]
+  rw [Nat.sum_divisorsAntidiagonal
+    (fun y1 y2 => weightedMoebius y1 * weightedMoebius 1 * wWeight 1 y2)]
+  rw [hsum]
+  simp [weightedMoebius, divideByN,
+    ArithmeticFunction.moebius_apply_prime hp, Nat.div_self hp.pos, hp.ne_zero]
   ring
 
 /-- At (p,p), the concrete residual kernel is the four-term double
