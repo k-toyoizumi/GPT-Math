@@ -10,7 +10,7 @@ absolute summability, an Euler-product limit, or the asymptotic formula for
 namespace WMobiusFinite
 
 open ArithmeticFunction
-open scoped ArithmeticFunction ArithmeticFunction.Moebius
+open scoped ArithmeticFunction
 
 abbrev AF := ArithmeticFunction ℚ
 abbrev BiAF := ArithmeticFunction AF
@@ -31,6 +31,7 @@ theorem divideByN_mul (f g : AF) :
   ext n
   by_cases hn : n = 0
   · simp [hn]
+  simp only [divideByN_apply]
   rw [ArithmeticFunction.mul_apply, ArithmeticFunction.mul_apply, Finset.sum_div]
   apply Finset.sum_congr rfl
   intro x hx
@@ -44,7 +45,6 @@ theorem divideByN_mul (f g : AF) :
     exact_mod_cast right_ne_zero_of_mul hprod
   have hcast : (x.1 : ℚ) * (x.2 : ℚ) = (n : ℚ) := by
     exact_mod_cast hmul
-  simp only [divideByN_apply]
   rw [← hcast]
   field_simp
 
@@ -61,7 +61,7 @@ def weightedZeta : AF :=
 
 /-- The inverse kernel `n ↦ μ(n)/n` on positive naturals. -/
 def weightedMoebius : AF :=
-  divideByN (μ : AF)
+  divideByN (ArithmeticFunction.moebius : AF)
 
 @[simp]
 theorem weightedZeta_mul_weightedMoebius :
@@ -84,14 +84,14 @@ theorem reconstruct (f : AF) :
 
 /-- Remove the weighted zeta factor in the first coordinate. -/
 def outerKernel (A : BiAF) : BiAF :=
-  weightedMoebius • A
+  (weightedMoebius • A : BiAF)
 
 /-- Remove the weighted zeta factor in the second coordinate as well. -/
 def innerKernel (A : BiAF) (r : ℕ) : AF :=
   kernel (outerKernel A r)
 
 theorem outer_reconstruct (A : BiAF) :
-    weightedZeta • outerKernel A = A := by
+    (weightedZeta • outerKernel A : BiAF) = A := by
   simp [outerKernel, ← mul_smul]
 
 theorem inner_reconstruct (A : BiAF) (r : ℕ) :
