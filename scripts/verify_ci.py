@@ -72,6 +72,7 @@ run_cmd do
           ("statement", toJson (reprStr info.type)),
           ("axioms", toJson (axioms.map Name.toString))]
         logInfo m!"AUDIT_JSON {row.compress}"
+      | .axiomInfo _ => throwError m!"Custom axiom in adopted module: {name}"
       | _ => pure ()
 '''.replace('MODULES', '[' + ', '.join(json.dumps(m) for m in modules) + ']'))
     output = run('axioms', ['lake', 'env', 'lean', str(audit)])
@@ -92,7 +93,9 @@ run_cmd do
     write('proofs.json', proofs)
     run('fault-injection', [sys.executable, 'scripts/fault_injection.py'])
     from handoff import record
-    result_hash = hashlib.sha256((OUT/'proofs.json').read_bytes() + (OUT/'experiments.json').read_bytes()).hexdigest()
+    semantic = {'proofs': [{k: p[k] for k in ('name','statement_hash','axioms','trust','blob_sha')} for p in proofs],
+                'experiments': [{**e, 'output': '\n'.join(line for line in e['output'].splitlines() if not line.startswith('Wrote '))} for e in experiments]}
+    result_hash = hashlib.sha256(json.dumps(semantic, sort_keys=True).encode()).hexdigest()
     for _ in range(2):
         record(OUT/'handoff.json', 'T11', source, result_hash, 'success', 'stop; await explicit research authorization')
     metadata['status'] = 'success'

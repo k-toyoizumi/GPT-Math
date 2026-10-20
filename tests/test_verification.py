@@ -58,3 +58,14 @@ class EvidenceTests(unittest.TestCase):
             data['packages'][0]['rev']='0'*40
             (root/'lake-manifest.json').write_text(json.dumps(data))
             with self.assertRaisesRegex(ValueError,'manifest differs'): check(root)
+    def test_artifact_corruption_rejected(self):
+        from evidence_gate import validate
+        import hashlib
+        with tempfile.TemporaryDirectory() as td:
+            root=Path(td)
+            (root/'run.json').write_text(json.dumps(dict(source_sha='sha',run_id='run',attempt='1',status='failed')))
+            (root/'test.log').write_text('original')
+            (root/'SHA256SUMS').write_text(''.join(f'{hashlib.sha256(p.read_bytes()).hexdigest()}  {p.name}\n' for p in root.iterdir()))
+            self.assertEqual(validate(root,'sha','run','1'),'failed')
+            (root/'test.log').write_text('corrupted')
+            with self.assertRaisesRegex(ValueError,'artifact_failed'): validate(root,'sha','run','1')

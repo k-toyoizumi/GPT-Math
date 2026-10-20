@@ -7,8 +7,8 @@ Unlike a Boolean arithmetic-progression search, this statement quantifies over
 the actual Finset of positive divisors of a*p+u. The second theorem converts
 divisibility to divisor-set membership using Mathlib's theorem.
 
-Verification status: PENDING CI. Do not cite as Lean-verified without checking
-the successful job log for this exact file and commit.
+Verification status is recorded by source hash in the Actions evidence artifact.
+Do not cite as Lean-verified without the successful run for the exact source.
 -/
 
 namespace TypeIIDivisorComplete

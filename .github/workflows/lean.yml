@@ -40,3 +40,47 @@ jobs:
           path: evidence/
           if-no-files-found: error
           retention-days: 90
+  failure-evidence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Inject dependency corruption in isolated checkout
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('lake-manifest.json')
+          data=json.loads(p.read_text())
+          data['packages'][0]['rev']='0'*40
+          p.write_text(json.dumps(data))
+          PY
+      - name: Production verifier must fail
+        id: rejected
+        continue-on-error: true
+        run: python3 scripts/verify_ci.py
+      - name: Confirm rejection and retained failure evidence
+        if: always()
+        env:
+          REJECTED_OUTCOME: ${{ steps.rejected.outcome }}
+        run: |
+          python3 scripts/finalize_evidence.py
+          python3 - <<'PY'
+          import json,os
+          from pathlib import Path
+          assert os.environ['REJECTED_OUTCOME']=='failure'
+          row=json.loads(Path('evidence/run.json').read_text())
+          assert row['status']=='failed' and row['failure_category']=='dependency_failed',row
+          PY
+          python3 scripts/evidence_gate.py
+      - name: Save deliberately failed verification evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: negative-control-${{ github.sha }}-${{ github.run_attempt }}
+          path: evidence/
+          if-no-files-found: error
+          retention-days: 90
