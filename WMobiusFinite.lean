@@ -372,6 +372,123 @@ theorem candidate_constant_transfer :
   field_simp [hpi]
   <;> ring
 
+
+/-- At an odd prime, the concrete residual kernel on the first axis is the
+two-term weighted Möbius difference of the original weight. -/
+theorem innerKernel_wArithmetic_prime_one
+    {p : ℕ} (hp : p.Prime) :
+    innerKernel wArithmetic p 1 =
+      wWeight p 1 - (1 / (p : ℚ)) * wWeight 1 1 := by
+  rw [innerKernel_wArithmetic_explicit p 1 (by norm_num)]
+  simp [weightedMoebius, divideByN, hp, hp.ne_zero]
+  ring
+
+/-- The analogous two-term residual-kernel formula on the second axis. -/
+theorem innerKernel_wArithmetic_one_prime
+    {p : ℕ} (hp : p.Prime) :
+    innerKernel wArithmetic 1 p =
+      wWeight 1 p - (1 / (p : ℚ)) * wWeight 1 1 := by
+  rw [innerKernel_wArithmetic_explicit 1 p hp.ne_zero]
+  simp [weightedMoebius, divideByN, hp, hp.ne_zero]
+  ring
+
+/-- At (p,p), the concrete residual kernel is the four-term double
+weighted-Möbius difference. -/
+theorem innerKernel_wArithmetic_prime_prime
+    {p : ℕ} (hp : p.Prime) :
+    innerKernel wArithmetic p p =
+      wWeight p p -
+        (1 / (p : ℚ)) * wWeight 1 p -
+        (1 / (p : ℚ)) * wWeight p 1 +
+        (1 / (p : ℚ)) ^ 2 * wWeight 1 1 := by
+  rw [innerKernel_wArithmetic_explicit p p hp.ne_zero]
+  simp [weightedMoebius, divideByN, hp, hp.ne_zero]
+  ring
+
+/-- The actual normalized residual-kernel coefficient at exponent pair
+(1,0) agrees with the rational local table. -/
+theorem normalized_innerKernel_wArithmetic_odd_prime_axis
+    {p : ℕ} (hp : p.Prime) (h2p : ¬ 2 ∣ p) :
+    2 * innerKernel wArithmetic p 1 = oddAxisCoeff (p : ℚ) := by
+  have hpQ0 : (p : ℚ) ≠ 0 := by exact_mod_cast hp.ne_zero
+  have hpQ1 : (p : ℚ) ≠ 1 := by exact_mod_cast hp.ne_one
+  have haxis :
+      normalizedWWeight p 1 = 1 / ((p - 1 : ℕ) : ℚ) := by
+    simpa using
+      (normalizedWWeight_odd_prime_pow_axis
+        (p := p) (e := 1) hp h2p (by norm_num))
+  have horigin : normalizedWWeight 1 1 = 1 := by
+    norm_num [normalizedWWeight, wWeight]
+  rw [innerKernel_wArithmetic_prime_one hp]
+  rw [show 2 * (wWeight p 1 - (1 / (p : ℚ)) * wWeight 1 1) =
+      normalizedWWeight p 1 -
+        (1 / (p : ℚ)) * normalizedWWeight 1 1 by
+      simp only [normalizedWWeight]
+      ring]
+  rw [haxis, horigin]
+  exact odd_axis_from_weighted_moebius (p : ℚ) hpQ0 hpQ1
+
+/-- The actual normalized residual-kernel coefficient at exponent pair
+(0,1) agrees with the same rational local table. -/
+theorem normalized_innerKernel_wArithmetic_one_odd_prime_axis
+    {p : ℕ} (hp : p.Prime) (h2p : ¬ 2 ∣ p) :
+    2 * innerKernel wArithmetic 1 p = oddAxisCoeff (p : ℚ) := by
+  have hpQ0 : (p : ℚ) ≠ 0 := by exact_mod_cast hp.ne_zero
+  have hpQ1 : (p : ℚ) ≠ 1 := by exact_mod_cast hp.ne_one
+  have haxis :
+      normalizedWWeight 1 p = 1 / ((p - 1 : ℕ) : ℚ) := by
+    simpa using
+      (normalizedWWeight_one_odd_prime_pow_axis
+        (p := p) (e := 1) hp h2p (by norm_num))
+  have horigin : normalizedWWeight 1 1 = 1 := by
+    norm_num [normalizedWWeight, wWeight]
+  rw [innerKernel_wArithmetic_one_prime hp]
+  rw [show 2 * (wWeight 1 p - (1 / (p : ℚ)) * wWeight 1 1) =
+      normalizedWWeight 1 p -
+        (1 / (p : ℚ)) * normalizedWWeight 1 1 by
+      simp only [normalizedWWeight]
+      ring]
+  rw [haxis, horigin]
+  exact odd_axis_from_weighted_moebius (p : ℚ) hpQ0 hpQ1
+
+/-- The actual normalized residual-kernel coefficient at exponent pair
+(1,1) agrees with the diagonal entry of the rational local table. -/
+theorem normalized_innerKernel_wArithmetic_odd_prime_diagonal
+    {p : ℕ} (hp : p.Prime) (h2p : ¬ 2 ∣ p) :
+    2 * innerKernel wArithmetic p p = oddDiagonalCoeff (p : ℚ) := by
+  have hpQ0 : (p : ℚ) ≠ 0 := by exact_mod_cast hp.ne_zero
+  have hpQ1 : (p : ℚ) ≠ 1 := by exact_mod_cast hp.ne_one
+  have hleft :
+      normalizedWWeight p 1 = 1 / ((p - 1 : ℕ) : ℚ) := by
+    simpa using
+      (normalizedWWeight_odd_prime_pow_axis
+        (p := p) (e := 1) hp h2p (by norm_num))
+  have hright :
+      normalizedWWeight 1 p = 1 / ((p - 1 : ℕ) : ℚ) := by
+    simpa using
+      (normalizedWWeight_one_odd_prime_pow_axis
+        (p := p) (e := 1) hp h2p (by norm_num))
+  have hdiag : normalizedWWeight p p = 0 := by
+    exact normalizedWWeight_same_prime_pow_eq_zero
+      (p := p) (e := 1) (f := 1) hp (by norm_num) (by norm_num)
+  have horigin : normalizedWWeight 1 1 = 1 := by
+    norm_num [normalizedWWeight, wWeight]
+  rw [innerKernel_wArithmetic_prime_prime hp]
+  rw [show
+      2 * (wWeight p p -
+        (1 / (p : ℚ)) * wWeight 1 p -
+        (1 / (p : ℚ)) * wWeight p 1 +
+        (1 / (p : ℚ)) ^ 2 * wWeight 1 1) =
+      normalizedWWeight p p -
+        (1 / (p : ℚ)) * normalizedWWeight 1 p -
+        (1 / (p : ℚ)) * normalizedWWeight p 1 +
+        (1 / (p : ℚ)) ^ 2 * normalizedWWeight 1 1 by
+      simp only [normalizedWWeight]
+      ring]
+  rw [hdiag, hright, hleft, horigin]
+  simpa only [zero_sub] using
+    odd_diagonal_from_weighted_moebius (p : ℚ) hpQ0 hpQ1
+
 #print axioms WMobiusFinite.divideByN_mul
 #print axioms WMobiusFinite.weightedZeta_mul_weightedMoebius
 #print axioms WMobiusFinite.finite_double_reconstruct
@@ -390,5 +507,11 @@ theorem candidate_constant_transfer :
 #print axioms WMobiusFinite.oddAbsoluteExcess_le
 #print axioms WMobiusFinite.two_local_mass
 #print axioms WMobiusFinite.candidate_constant_transfer
+#print axioms WMobiusFinite.innerKernel_wArithmetic_prime_one
+#print axioms WMobiusFinite.innerKernel_wArithmetic_one_prime
+#print axioms WMobiusFinite.innerKernel_wArithmetic_prime_prime
+#print axioms WMobiusFinite.normalized_innerKernel_wArithmetic_odd_prime_axis
+#print axioms WMobiusFinite.normalized_innerKernel_wArithmetic_one_odd_prime_axis
+#print axioms WMobiusFinite.normalized_innerKernel_wArithmetic_odd_prime_diagonal
 
 end WMobiusFinite
