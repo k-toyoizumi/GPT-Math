@@ -2,22 +2,23 @@
   "seen": [
     "0f442701d573a56fc7a2f27f34b111c5e3c2eb7f5c3bca8e37e438a8e42508c0",
     "0c0cb72809e76590cb3c78d49d3c6396ab81b29f02ab58037c1110531a6c1114",
-    "7cd2b7c10bb9a8d96a302989fe26ff151254fd605987952e4081c36251fedabf"
+    "7cd2b7c10bb9a8d96a302989fe26ff151254fd605987952e4081c36251fedabf",
+    "c54a2bf6f0dc2635cb5819f105476335c812eae23e29d2f94b8fea58c7eaf153"
   ],
-  "attempts": 4,
-  "progress_count": 3,
-  "task_id": "T12-D",
-  "source_sha": "65cd80e79ed8b28e8eba0450355945d51e2c530e",
-  "result_hash": "9d5fbd957bde6912ad8b796b268b21b18baf3e8cfe8dac2df6d1e651930aea88",
+  "attempts": 5,
+  "progress_count": 4,
+  "task_id": "T12-E",
+  "source_sha": "894d450b3f4c146235e26113d3e08877f5e51662",
+  "result_hash": "06be94f54acbea09c7bf5e6601142975e15b73585bb00e9c1fb5f345d26a6af5",
   "status": "success",
-  "next_action": "specialize the verified finite identity to the concrete W weight and state the remaining analytic hypotheses; do not claim the asymptotic until absolute summability, logarithmic moments, tails, and Euler product are proved",
+  "next_action": "T12-F: derive the concrete residual kernel local factors, treating p=2 separately, and formulate the first provable absolute-summability or logarithmic-moment bound; do not claim the asymptotic or Euler-product constant before tail transfer is proved",
   "duplicate": false,
   "publication_status": "published_to_research_branch",
-  "publication_commit": "fbb1226d305b017354b8d53c3431f5a30259f811",
-  "verified_head_sha": "e327a16208f71773cc33e68d76da8322b65a4dc2",
-  "verified_merge_sha": "15344452bf6a02c425a3ce806559ef62153bdba4",
-  "actions_run_id": 39458226341,
+  "publication_commit": "521b1ac22e63100bc2dd819b30c180c5d6f59ff8",
+  "verified_head_sha": "043ad653531721add32a148c648ff552c34179bc",
+  "verified_merge_sha": "8e3dfb9b9e97281be97f1b60d3fb3b25ad9c3443",
+  "actions_run_id": 39463131474,
   "actions_attempt": 1,
-  "verification_artifact_id": 12282050743,
-  "recovery_status": "T12A/T12B ZIPs and original rejection text unavailable; T12-D is a new independently backed-up and published result"
+  "verification_artifact_id": 12282979286,
+  "recovery_status": "T12A/T12B ZIPs and original rejection text remain unavailable; T12-E was independently backed up before publication and then verified"
 }
