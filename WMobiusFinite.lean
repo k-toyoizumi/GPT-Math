@@ -154,9 +154,9 @@ theorem normalizedWWeight_axis_of_two_not_dvd
     (Nat.prime_two.coprime_iff_not_dvd.mpr h2n).pow_left 2
   have htot : (Nat.totient n : ℚ) ≠ 0 := by
     exact_mod_cast (Nat.totient_pos.mpr (Nat.pos_of_ne_zero hn)).ne'
-  rw [normalizedWWeight,
-    wWeight_of_ne_zero_coprime n 1 hn one_ne_zero (Nat.coprime_one_right n)]
-  simp only [mul_one]
+  rw [normalizedWWeight]
+  simp only [wWeight, hn, one_ne_zero, Nat.coprime_one_right,
+    not_true_eq_false, or_false, if_false, mul_one]
   rw [Nat.totient_mul hcop]
   norm_num [htot]
 
