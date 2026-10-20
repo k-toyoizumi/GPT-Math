@@ -421,7 +421,7 @@ theorem innerKernel_wArithmetic_prime_prime
       ∑ x ∈ p.divisorsAntidiagonal,
         weightedMoebius y1 * weightedMoebius x.1 * wWeight x.2 y2)]
   rw [hsum]
-  simp only [Nat.div_one, Nat.div_self hp.ne_zero]
+  simp only [Nat.div_one, Nat.div_self hp.pos]
   rw [Nat.sum_divisorsAntidiagonal
     (fun x1 x2 => weightedMoebius 1 * weightedMoebius x1 * wWeight x2 p)]
   rw [Nat.sum_divisorsAntidiagonal
