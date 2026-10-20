@@ -159,7 +159,7 @@ theorem normalizedWWeight_axis_of_two_not_dvd
   rw [normalizedWWeight]
   simp [wWeight, hn]
   rw [Nat.totient_mul hcop, htot4]
-  ring
+  norm_num [Nat.cast_mul, mul_inv_rev]
 
 /-- For an odd prime power, the normalized concrete axis value is the local
 factor used in the residual-kernel table. -/
