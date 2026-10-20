@@ -145,6 +145,35 @@ def wArithmetic : BiAF :=
 def normalizedWWeight (u a : ℕ) : ℚ :=
   2 * wWeight u a
 
+/-- The concrete weight is symmetric in its two coordinates. -/
+theorem wWeight_comm (u a : ℕ) :
+    wWeight u a = wWeight a u := by
+  unfold wWeight
+  have hcond :
+      (u = 0 ∨ a = 0 ∨ ¬ Nat.Coprime u a) ↔
+        (a = 0 ∨ u = 0 ∨ ¬ Nat.Coprime a u) := by
+    constructor
+    · rintro (hu | ha | hcop)
+      · exact Or.inr (Or.inl hu)
+      · exact Or.inl ha
+      · exact Or.inr (Or.inr (fun hac => hcop hac.symm))
+    · rintro (ha | hu | hcop)
+      · exact Or.inr (Or.inl ha)
+      · exact Or.inl hu
+      · exact Or.inr (Or.inr (fun hua => hcop hua.symm))
+  by_cases h : u = 0 ∨ a = 0 ∨ ¬ Nat.Coprime u a
+  · rw [if_pos h, if_pos (hcond.mp h)]
+  · have h' : ¬ (a = 0 ∨ u = 0 ∨ ¬ Nat.Coprime a u) :=
+      fun ha => h (hcond.mpr ha)
+    rw [if_neg h, if_neg h']
+    rw [show 4 * u * a = 4 * a * u by ac_rfl]
+
+/-- Coordinate symmetry after the normalization used in the local table. -/
+theorem normalizedWWeight_comm (u a : ℕ) :
+    normalizedWWeight u a = normalizedWWeight a u := by
+  simpa only [normalizedWWeight] using
+    congrArg (fun q : ℚ => 2 * q) (wWeight_comm u a)
+
 /-- Away from the prime `2`, the normalized concrete weight on an axis is
 exactly the reciprocal totient weight. -/
 theorem normalizedWWeight_axis_of_two_not_dvd
@@ -174,6 +203,24 @@ theorem normalizedWWeight_odd_prime_pow_axis
   rw [normalizedWWeight_axis_of_two_not_dvd (p ^ e) hp0
     (Nat.prime_two.coprime_iff_not_dvd.mp hcop)]
   rw [Nat.totient_prime_pow hp he]
+
+/-- The odd-prime-power axis formula also holds on the second coordinate. -/
+theorem normalizedWWeight_one_odd_prime_pow_axis
+    {p e : ℕ} (hp : p.Prime) (h2p : ¬ 2 ∣ p) (he : 0 < e) :
+    normalizedWWeight 1 (p ^ e) =
+      1 / ((p ^ (e - 1) * (p - 1) : ℕ) : ℚ) := by
+  rw [normalizedWWeight_comm]
+  exact normalizedWWeight_odd_prime_pow_axis hp h2p he
+
+/-- Positive powers of the same prime occupy no mixed support of the concrete
+normalized weight, because the two coordinates are not coprime. -/
+theorem normalizedWWeight_same_prime_pow_eq_zero
+    {p e f : ℕ} (hp : p.Prime) (he : 0 < e) (hf : 0 < f) :
+    normalizedWWeight (p ^ e) (p ^ f) = 0 := by
+  have hnot : ¬ Nat.Coprime (p ^ e) (p ^ f) := by
+    rw [Nat.coprime_pow_left_iff he, Nat.coprime_pow_right_iff hf]
+    exact (Nat.Prime.dvd_iff_not_coprime hp).mp (dvd_refl p)
+  simp [normalizedWWeight, wWeight, hnot]
 
 /--
 The residual kernel is exactly the finite double weighted-Möbius transform
@@ -331,8 +378,12 @@ theorem candidate_constant_transfer :
 #print axioms WMobiusFinite.finite_wWeight_reconstruct
 #print axioms WMobiusFinite.innerKernel_explicit
 #print axioms WMobiusFinite.innerKernel_wArithmetic_explicit
+#print axioms WMobiusFinite.wWeight_comm
+#print axioms WMobiusFinite.normalizedWWeight_comm
 #print axioms WMobiusFinite.normalizedWWeight_axis_of_two_not_dvd
 #print axioms WMobiusFinite.normalizedWWeight_odd_prime_pow_axis
+#print axioms WMobiusFinite.normalizedWWeight_one_odd_prime_pow_axis
+#print axioms WMobiusFinite.normalizedWWeight_same_prime_pow_eq_zero
 #print axioms WMobiusFinite.odd_axis_from_weighted_moebius
 #print axioms WMobiusFinite.odd_diagonal_from_weighted_moebius
 #print axioms WMobiusFinite.odd_local_mass
