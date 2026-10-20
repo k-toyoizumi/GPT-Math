@@ -24,7 +24,7 @@ def run(name, command):
     with subprocess.Popen(command, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
                           start_new_session=True) as p:
         try:
-            output, _ = p.communicate(timeout=90 if name == 'axioms' else 300)
+            output, _ = p.communicate(timeout=300)
         except subprocess.TimeoutExpired:
             os.killpg(p.pid, signal.SIGKILL)
             output, _ = p.communicate()
@@ -74,9 +74,10 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let modules : List String := MODULES
+  let moduleNames := env.header.moduleNames
   for (name, info) in env.constants.toList do
     let some idx := env.getModuleIdxFor? name | continue
-    let modName := env.header.moduleNames[idx.toNat]!
+    let modName := moduleNames[idx.toNat]!
     if modules.contains modName.toString then
       match info with
       | .thmInfo _ =>
