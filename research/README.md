@@ -20,3 +20,12 @@ These labels are independent: Lean verification does not establish novelty.
 5. Compare against prior work before moving a result into `paper-candidates/`.
 
 **Never silently delete failed approaches.** Record why they failed so they are not repeated.
+
+## Current infrastructure ledger
+
+Research is stopped during [remediation](2026-10-20-remediation-status.md).
+Historical notes retain their original uncompiled/pending status; current adoption
+and proof status are determined by `lean-sources.json` and the accepted source's
+Actions evidence, never by a branch name. New files under any directory must be
+classified in the registry before CI can accept them. Failed setup or missing
+artifacts never establishes verification.

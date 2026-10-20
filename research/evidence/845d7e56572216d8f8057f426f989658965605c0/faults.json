@@ -1,0 +1,42 @@
+[
+  {
+    "fault": "dependency-missing",
+    "exit_code": 1,
+    "output": "DEPENDENCY LOCK FAIL: missing lake-manifest.json\n"
+  },
+  {
+    "fault": "dependency-sha",
+    "exit_code": 1,
+    "output": "DEPENDENCY LOCK FAIL: manifest differs from reviewed dependency-lock.sha256\n"
+  },
+  {
+    "fault": "dependency-version",
+    "exit_code": 1,
+    "output": "DEPENDENCY LOCK FAIL: Lean/Mathlib version mismatch with audited v4.24.0 lock\n"
+  },
+  {
+    "fault": "invalid-lean",
+    "exit_code": 1,
+    "output": "/tmp/tmpx9hwk6yr/Broken.lean:2:29: error: Tactic `decide` proved that the proposition\n  False\nis false\n"
+  },
+  {
+    "fault": "sorry",
+    "detected_axiom": "sorryAx",
+    "output": "/tmp/tmpx9hwk6yr/Broken.lean:2:8: warning: declaration uses 'sorry'\n'hole' depends on axioms: [sorryAx]\n"
+  },
+  {
+    "fault": "custom-axiom",
+    "detected_axiom": "evil",
+    "output": "'bad' depends on axioms: [evil]\n"
+  },
+  {
+    "fault": "pipefail",
+    "exit_code": 1,
+    "output": ""
+  },
+  {
+    "fault": "python-expected-result",
+    "exit_code": 1,
+    "output": "Traceback (most recent call last):\n  File \"/tmp/tmpx9hwk6yr/damaged.py\", line 103, in <module>\n    main()\n  File \"/tmp/tmpx9hwk6yr/damaged.py\", line 84, in main\n    assert len(rows7) == 36\n           ^^^^^^^^^^^^^^^^\nAssertionError\n"
+  }
+]

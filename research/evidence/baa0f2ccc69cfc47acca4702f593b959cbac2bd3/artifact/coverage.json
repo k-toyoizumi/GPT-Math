@@ -1,0 +1,19 @@
+{
+  "tracked_lean_files": [
+    "ProgressionCompleteness.lean",
+    "TypeIIDepthSeven.lean",
+    "TypeIIDivisorComplete.lean",
+    "TypeIIReconstruction.lean",
+    "XuGeneralAudit.lean",
+    "XuTheorem41Audit.lean"
+  ],
+  "lake_targets": [
+    "ProgressionCompleteness",
+    "TypeIIDepthSeven",
+    "TypeIIDivisorComplete",
+    "TypeIIReconstruction",
+    "XuGeneralAudit",
+    "XuTheorem41Audit"
+  ],
+  "file_count": 6
+}

@@ -1,0 +1,22 @@
+'TypeIIProgression.divisor_witness_progression' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TypeIIProgression.progression_witness_divisibility' depends on axioms: [propext, Quot.sound]
+'TypeIIDepthSeven.noWitnessInFiniteSearch' depends on axioms: [propext, Lean.ofReduceBool, Lean.trustCompiler]
+'TypeIIDepthSeven.depthEightWitness' depends on axioms: [propext]
+'TypeIIDepthSeven.depthEightUnitFractionIdentity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TypeIIDivisorComplete.noWitnessInDivisorSets' depends on axioms: [propext,
+ Classical.choice,
+ Lean.ofReduceBool,
+ Lean.trustCompiler,
+ Quot.sound]
+'TypeIIDivisorComplete.noWitnessForAnyPositiveDivisor' depends on axioms: [propext,
+ Classical.choice,
+ Lean.ofReduceBool,
+ Lean.trustCompiler,
+ Quot.sound]
+'TypeIIReconstruction.cross_multiplication' depends on axioms: [propext]
+'TypeIIReconstruction.p670849_witness' depends on axioms: [propext]
+'XuGeneralAudit.general_residual' depends on axioms: [propext, Classical.choice, Quot.sound]
+'XuGeneralAudit.equality_iff_corrected' depends on axioms: [propext, Classical.choice, Quot.sound]
+'XuAudit.displayed_residual' depends on axioms: [propext, Classical.choice, Quot.sound]
+'XuAudit.displayed_identity_false' depends on axioms: [propext, Classical.choice, Quot.sound]
+'XuAudit.corrected_example' depends on axioms: [propext, Classical.choice, Quot.sound]

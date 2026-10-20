@@ -1,0 +1,21 @@
+ℹ [7351/7362] Built TypeIIReconstruction (4.3s)
+info: TypeIIReconstruction.lean:29:0: 'TypeIIReconstruction.cross_multiplication' depends on axioms: [propext]
+info: TypeIIReconstruction.lean:30:0: 'TypeIIReconstruction.p670849_witness' depends on axioms: [propext]
+✔ [7353/7362] Built ProgressionCompleteness (4.5s)
+ℹ [7355/7362] Built XuGeneralAudit (4.9s)
+info: XuGeneralAudit.lean:40:0: 'XuGeneralAudit.general_residual' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: XuGeneralAudit.lean:41:0: 'XuGeneralAudit.equality_iff_corrected' depends on axioms: [propext, Classical.choice, Quot.sound]
+✔ [7357/7362] Built XuTheorem41Audit (3.6s)
+ℹ [7359/7362] Built TypeIIDivisorComplete (23s)
+info: TypeIIDivisorComplete.lean:36:0: 'TypeIIDivisorComplete.noWitnessInDivisorSets' depends on axioms: [propext,
+ Classical.choice,
+ Lean.ofReduceBool,
+ Lean.trustCompiler,
+ Quot.sound]
+info: TypeIIDivisorComplete.lean:37:0: 'TypeIIDivisorComplete.noWitnessForAnyPositiveDivisor' depends on axioms: [propext,
+ Classical.choice,
+ Lean.ofReduceBool,
+ Lean.trustCompiler,
+ Quot.sound]
+✔ [7361/7362] Built TypeIIDepthSeven (24s)
+Build completed successfully (7362 jobs).

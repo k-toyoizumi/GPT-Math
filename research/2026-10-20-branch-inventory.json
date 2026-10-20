@@ -1,0 +1,431 @@
+[
+  {
+    "ref": "origin",
+    "sha": "f7866a810ba4efcdf329c6bae921b242b1c046b0",
+    "differing_files": [],
+    "adoption": "archived candidate; no automatic adoption; prior success not reused",
+    "verification_status": "not_executed_on_integration",
+    "adoption_reason": "not required for infrastructure acceptance; no new mathematical work or prior-run evidence inherited"
+  },
+  {
+    "ref": "origin/automation/ci-evidence-20261018-2244",
+    "sha": "f7866a810ba4efcdf329c6bae921b242b1c046b0",
+    "differing_files": [],
+    "adoption": "archived candidate; no automatic adoption; prior success not reused",
+    "verification_status": "not_executed_on_integration",
+    "adoption_reason": "not required for infrastructure acceptance; no new mathematical work or prior-run evidence inherited"
+  },
+  {
+    "ref": "origin/automation/ci-evidence-20261018-2344",
+    "sha": "f7866a810ba4efcdf329c6bae921b242b1c046b0",
+    "differing_files": [],
+    "adoption": "archived candidate; no automatic adoption; prior success not reused",
+    "verification_status": "not_executed_on_integration",
+    "adoption_reason": "not required for infrastructure acceptance; no new mathematical work or prior-run evidence inherited"
+  },
+  {
+    "ref": "origin/automation/ci-evidence-20261019-0244",
+    "sha": "f7866a810ba4efcdf329c6bae921b242b1c046b0",
+    "differing_files": [],
+    "adoption": "archived candidate; no automatic adoption; prior success not reused",
+    "verification_status": "not_executed_on_integration",
+    "adoption_reason": "not required for infrastructure acceptance; no new mathematical work or prior-run evidence inherited"
+  },
+  {
+    "ref": "origin/automation/ci-inventory-20261018-2142",
+    "sha": "f7866a810ba4efcdf329c6bae921b242b1c046b0",
+    "differing_files": [],
+    "adoption": "archived candidate; no automatic adoption; prior success not reused",
+    "verification_status": "not_executed_on_integration",
+    "adoption_reason": "not required for infrastructure acceptance; no new mathematical work or prior-run evidence inherited"
+  },
+  {
+    "ref": "origin/automation/ci-inventory-20261019-0038",
+    "sha": "f7866a810ba4efcdf329c6bae921b242b1c046b0",
+    "differing_files": [],
+    "adoption": "archived candidate; no automatic adoption; prior success not reused",
+    "verification_status": "not_executed_on_integration",
+    "adoption_reason": "not required for infrastructure acceptance; no new mathematical work or prior-run evidence inherited"
+  },
+  {
+    "ref": "origin/automation/ci-inventory-gate-20261018-1547",
+    "sha": "f7866a810ba4efcdf329c6bae921b242b1c046b0",
+    "differing_files": [],
+    "adoption": "archived candidate; no automatic adoption; prior success not reused",
+    "verification_status": "not_executed_on_integration",
+    "adoption_reason": "not required for infrastructure acceptance; no new mathematical work or prior-run evidence inherited"
+  },
+  {
+    "ref": "origin/automation/lean-coverage-20261018-1739",
+    "sha": "f7866a810ba4efcdf329c6bae921b242b1c046b0",
+    "differing_files": [],
+    "adoption": "archived candidate; no automatic adoption; prior success not reused",
+    "verification_status": "not_executed_on_integration",
+    "adoption_reason": "not required for infrastructure acceptance; no new mathematical work or prior-run evidence inherited"
+  },
+  {
+    "ref": "origin/automation/lean-inventory-gate-20261018-1440",
+    "sha": "f7866a810ba4efcdf329c6bae921b242b1c046b0",
+    "differing_files": [],
+    "adoption": "archived candidate; no automatic adoption; prior success not reused",
+    "verification_status": "not_executed_on_integration",
+    "adoption_reason": "not required for infrastructure acceptance; no new mathematical work or prior-run evidence inherited"
+  },
+  {
+    "ref": "origin/automation/reproducible-ci-20261018",
+    "sha": "ec620dde52e36269b11cb6f641f84110e2fcc31f",
+    "differing_files": [
+      "docs/ci-foundation-checklist-20261018.md"
+    ],
+    "adoption": "archived candidate; no automatic adoption; prior success not reused",
+    "verification_status": "not_executed_on_integration",
+    "adoption_reason": "not required for infrastructure acceptance; no new mathematical work or prior-run evidence inherited"
+  },
+  {
+    "ref": "origin/ci/complete-lean-inventory-20261020",
+    "sha": "f7866a810ba4efcdf329c6bae921b242b1c046b0",
+    "differing_files": [],
+    "adoption": "archived candidate; no automatic adoption; prior success not reused",
+    "verification_status": "not_executed_on_integration",
+    "adoption_reason": "not required for infrastructure acceptance; no new mathematical work or prior-run evidence inherited"
+  },
+  {
+    "ref": "origin/ci/default-targets-all-20261019",
+    "sha": "f7866a810ba4efcdf329c6bae921b242b1c046b0",
+    "differing_files": [],
+    "adoption": "archived candidate; no automatic adoption; prior success not reused",
+    "verification_status": "not_executed_on_integration",
+    "adoption_reason": "not required for infrastructure acceptance; no new mathematical work or prior-run evidence inherited"
+  },
+  {
+    "ref": "origin/ci/dependency-integrity-20261019-1944",
+    "sha": "a49ffbdeca0395e97daac91caf98a6092d8e95df",
+    "differing_files": [
+      "lake-manifest.json",
+      "scripts/ci_status.py",
+      "scripts/dependency_lock_gate.py",
+      "scripts/lean_inventory_gate.py"
+    ],
+    "adoption": "archived candidate; no automatic adoption; prior success not reused",
+    "verification_status": "not_executed_on_integration",
+    "adoption_reason": "not required for infrastructure acceptance; no new mathematical work or prior-run evidence inherited"
+  },
+  {
+    "ref": "origin/ci/evidence-audit-20261019-1145",
+    "sha": "0616af6e2cc6cae887193b5f7d892e837d99a1c2",
+    "differing_files": [
+      "lake-manifest.json",
+      "scripts/ci_status.py",
+      "scripts/lean_inventory_gate.py"
+    ],
+    "adoption": "archived candidate; no automatic adoption; prior success not reused",
+    "verification_status": "not_executed_on_integration",
+    "adoption_reason": "not required for infrastructure acceptance; no new mathematical work or prior-run evidence inherited"
+  },
+  {
+    "ref": "origin/ci/evidence-inventory-20261020-0245",
+    "sha": "f7866a810ba4efcdf329c6bae921b242b1c046b0",
+    "differing_files": [],
+    "adoption": "archived candidate; no automatic adoption; prior success not reused",
+    "verification_status": "not_executed_on_integration",
+    "adoption_reason": "not required for infrastructure acceptance; no new mathematical work or prior-run evidence inherited"
+  },
+  {
+    "ref": "origin/ci/evidence-run-20261019-1550",
+    "sha": "a49ffbdeca0395e97daac91caf98a6092d8e95df",
+    "differing_files": [
+      "lake-manifest.json",
+      "scripts/ci_status.py",
+      "scripts/dependency_lock_gate.py",
+      "scripts/lean_inventory_gate.py"
+    ],
+    "adoption": "archived candidate; no automatic adoption; prior success not reused",
+    "verification_status": "not_executed_on_integration",
+    "adoption_reason": "not required for infrastructure acceptance; no new mathematical work or prior-run evidence inherited"
+  },
+  {
+    "ref": "origin/ci/lean-coverage-evidence-20261020-0338",
+    "sha": "baa0f2ccc69cfc47acca4702f593b959cbac2bd3",
+    "differing_files": [
+      ".github/workflows/lean.yml",
+      "ProgressionCompleteness.lean",
+      "TypeIIDivisorComplete.lean",
+      "dependency-lock.sha256",
+      "experiments/verify_certificate.py",
+      "lake-manifest.json",
+      "lakefile.toml",
+      "lean-sources.json",
+      "research/2026-10-20-implementation-inventory.md",
+      "research/2026-10-20-independent-critical-review.md",
+      "research/2026-10-20-remediation-plan.md",
+      "scripts/dependency_lock_gate.py",
+      "scripts/fault_injection.py",
+      "scripts/lean_inventory_gate.py",
+      "scripts/verify_ci.py",
+      "tests/test_lean_inventory_gate.py"
+    ],
+    "adoption": "integration",
+    "verification_status": "not_executed_on_integration",
+    "adoption_reason": "current acceptance record supersedes initial inventory"
+  },
+  {
+    "ref": "origin/infra/ci-evidence-20261019-r6",
+    "sha": "f7866a810ba4efcdf329c6bae921b242b1c046b0",
+    "differing_files": [],
+    "adoption": "archived candidate; no automatic adoption; prior success not reused",
+    "verification_status": "not_executed_on_integration",
+    "adoption_reason": "not required for infrastructure acceptance; no new mathematical work or prior-run evidence inherited"
+  },
+  {
+    "ref": "origin/infra/ci-evidence-r8-20261019",
+    "sha": "f7866a810ba4efcdf329c6bae921b242b1c046b0",
+    "differing_files": [],
+    "adoption": "archived candidate; no automatic adoption; prior success not reused",
+    "verification_status": "not_executed_on_integration",
+    "adoption_reason": "not required for infrastructure acceptance; no new mathematical work or prior-run evidence inherited"
+  },
+  {
+    "ref": "origin/infra/ci-inventory-20261019-0845",
+    "sha": "f7866a810ba4efcdf329c6bae921b242b1c046b0",
+    "differing_files": [],
+    "adoption": "archived candidate; no automatic adoption; prior success not reused",
+    "verification_status": "not_executed_on_integration",
+    "adoption_reason": "not required for infrastructure acceptance; no new mathematical work or prior-run evidence inherited"
+  },
+  {
+    "ref": "origin/infra/evidence-gates-20261019-r7",
+    "sha": "f7866a810ba4efcdf329c6bae921b242b1c046b0",
+    "differing_files": [],
+    "adoption": "archived candidate; no automatic adoption; prior success not reused",
+    "verification_status": "not_executed_on_integration",
+    "adoption_reason": "not required for infrastructure acceptance; no new mathematical work or prior-run evidence inherited"
+  },
+  {
+    "ref": "origin/main",
+    "sha": "f7866a810ba4efcdf329c6bae921b242b1c046b0",
+    "differing_files": [],
+    "adoption": "baseline",
+    "verification_status": "baseline; earlier CI only",
+    "adoption_reason": "not required for infrastructure acceptance; no new mathematical work or prior-run evidence inherited"
+  },
+  {
+    "ref": "origin/research/2026-10-19-fab-theorem5-interpretation-audit",
+    "sha": "f7866a810ba4efcdf329c6bae921b242b1c046b0",
+    "differing_files": [],
+    "adoption": "archived candidate; no automatic adoption; prior success not reused",
+    "verification_status": "not_executed_on_integration",
+    "adoption_reason": "not required for infrastructure acceptance; no new mathematical work or prior-run evidence inherited"
+  },
+  {
+    "ref": "origin/research/2026-10-19-fraction-cross-equivalence",
+    "sha": "f7866a810ba4efcdf329c6bae921b242b1c046b0",
+    "differing_files": [],
+    "adoption": "archived candidate; no automatic adoption; prior success not reused",
+    "verification_status": "not_executed_on_integration",
+    "adoption_reason": "not required for infrastructure acceptance; no new mathematical work or prior-run evidence inherited"
+  },
+  {
+    "ref": "origin/research/binary-factor-bridge-20261019-1534",
+    "sha": "f7866a810ba4efcdf329c6bae921b242b1c046b0",
+    "differing_files": [],
+    "adoption": "archived candidate; no automatic adoption; prior success not reused",
+    "verification_status": "not_executed_on_integration",
+    "adoption_reason": "not required for infrastructure acceptance; no new mathematical work or prior-run evidence inherited"
+  },
+  {
+    "ref": "origin/research/bradford-finite-k-obstruction-20261018",
+    "sha": "f7866a810ba4efcdf329c6bae921b242b1c046b0",
+    "differing_files": [],
+    "adoption": "archived candidate; no automatic adoption; prior success not reused",
+    "verification_status": "not_executed_on_integration",
+    "adoption_reason": "not required for infrastructure acceptance; no new mathematical work or prior-run evidence inherited"
+  },
+  {
+    "ref": "origin/research/chamberland-typeii-formalization-20261020",
+    "sha": "f7866a810ba4efcdf329c6bae921b242b1c046b0",
+    "differing_files": [],
+    "adoption": "archived candidate; no automatic adoption; prior success not reused",
+    "verification_status": "not_executed_on_integration",
+    "adoption_reason": "not required for infrastructure acceptance; no new mathematical work or prior-run evidence inherited"
+  },
+  {
+    "ref": "origin/research/chamberland-typeii-identity-20261019-2241",
+    "sha": "f7866a810ba4efcdf329c6bae921b242b1c046b0",
+    "differing_files": [],
+    "adoption": "archived candidate; no automatic adoption; prior success not reused",
+    "verification_status": "not_executed_on_integration",
+    "adoption_reason": "not required for infrastructure acceptance; no new mathematical work or prior-run evidence inherited"
+  },
+  {
+    "ref": "origin/research/dahan-14-independent-audit-20261018",
+    "sha": "f7866a810ba4efcdf329c6bae921b242b1c046b0",
+    "differing_files": [],
+    "adoption": "archived candidate; no automatic adoption; prior success not reused",
+    "verification_status": "not_executed_on_integration",
+    "adoption_reason": "not required for infrastructure acceptance; no new mathematical work or prior-run evidence inherited"
+  },
+  {
+    "ref": "origin/research/dahan-w-conditional-sieve-audit-20261019",
+    "sha": "f7866a810ba4efcdf329c6bae921b242b1c046b0",
+    "differing_files": [],
+    "adoption": "archived candidate; no automatic adoption; prior success not reused",
+    "verification_status": "not_executed_on_integration",
+    "adoption_reason": "not required for infrastructure acceptance; no new mathematical work or prior-run evidence inherited"
+  },
+  {
+    "ref": "origin/research/divisor-pair-identity-20261019",
+    "sha": "8212448c91ccc378023537ea6e3d9c998c46f80f",
+    "differing_files": [
+      "TypeIIReconstruction.lean"
+    ],
+    "adoption": "archived candidate; no automatic adoption; prior success not reused",
+    "verification_status": "not_executed_on_integration",
+    "adoption_reason": "not required for infrastructure acceptance; no new mathematical work or prior-run evidence inherited"
+  },
+  {
+    "ref": "origin/research/esc-fixed-denominator-bridge-20261019",
+    "sha": "f7866a810ba4efcdf329c6bae921b242b1c046b0",
+    "differing_files": [],
+    "adoption": "archived candidate; no automatic adoption; prior success not reused",
+    "verification_status": "not_executed_on_integration",
+    "adoption_reason": "not required for infrastructure acceptance; no new mathematical work or prior-run evidence inherited"
+  },
+  {
+    "ref": "origin/research/fab-minimality-scope-20261018",
+    "sha": "f7866a810ba4efcdf329c6bae921b242b1c046b0",
+    "differing_files": [],
+    "adoption": "archived candidate; no automatic adoption; prior success not reused",
+    "verification_status": "not_executed_on_integration",
+    "adoption_reason": "not required for infrastructure acceptance; no new mathematical work or prior-run evidence inherited"
+  },
+  {
+    "ref": "origin/research/fixed-x-coprime-bridge-20261020",
+    "sha": "8212448c91ccc378023537ea6e3d9c998c46f80f",
+    "differing_files": [
+      "TypeIIReconstruction.lean"
+    ],
+    "adoption": "archived candidate; no automatic adoption; prior success not reused",
+    "verification_status": "not_executed_on_integration",
+    "adoption_reason": "not required for infrastructure acceptance; no new mathematical work or prior-run evidence inherited"
+  },
+  {
+    "ref": "origin/research/hyperbolic-prior-art-20261020-0428",
+    "sha": "f7866a810ba4efcdf329c6bae921b242b1c046b0",
+    "differing_files": [],
+    "adoption": "archived candidate; no automatic adoption; prior success not reused",
+    "verification_status": "not_executed_on_integration",
+    "adoption_reason": "not required for infrastructure acceptance; no new mathematical work or prior-run evidence inherited"
+  },
+  {
+    "ref": "origin/research/totient-sieve-constant-20261020",
+    "sha": "f7866a810ba4efcdf329c6bae921b242b1c046b0",
+    "differing_files": [],
+    "adoption": "archived candidate; no automatic adoption; prior success not reused",
+    "verification_status": "not_executed_on_integration",
+    "adoption_reason": "not required for infrastructure acceptance; no new mathematical work or prior-run evidence inherited"
+  },
+  {
+    "ref": "origin/research/totient-sum-asymptotic-20261018",
+    "sha": "f7866a810ba4efcdf329c6bae921b242b1c046b0",
+    "differing_files": [],
+    "adoption": "archived candidate; no automatic adoption; prior success not reused",
+    "verification_status": "not_executed_on_integration",
+    "adoption_reason": "not required for infrastructure acceptance; no new mathematical work or prior-run evidence inherited"
+  },
+  {
+    "ref": "origin/research/typeii-670849-certificate-20261018",
+    "sha": "9adfe595522f613a94c29d70ba1d2f2d3766874e",
+    "differing_files": [
+      ".github/workflows/lean.yml",
+      "research/2026-10-18-typeii-670849/ProgressionCompleteness.lean",
+      "research/2026-10-18-typeii-670849/README.md",
+      "research/2026-10-18-typeii-670849/TypeIIDepthSeven_UNCOMPILED.lean",
+      "research/2026-10-18-typeii-670849/TypeIIDivisorComplete.lean",
+      "research/2026-10-18-typeii-670849/minimal_modulus_certificate.py",
+      "research/2026-10-18-typeii-670849/verify.py"
+    ],
+    "adoption": "archived candidate; no automatic adoption; prior success not reused",
+    "verification_status": "not_executed_on_integration",
+    "adoption_reason": "not required for infrastructure acceptance; no new mathematical work or prior-run evidence inherited"
+  },
+  {
+    "ref": "origin/research/typeii-depth-census-10m-20261018",
+    "sha": "f7866a810ba4efcdf329c6bae921b242b1c046b0",
+    "differing_files": [],
+    "adoption": "archived candidate; no automatic adoption; prior success not reused",
+    "verification_status": "not_executed_on_integration",
+    "adoption_reason": "not required for infrastructure acceptance; no new mathematical work or prior-run evidence inherited"
+  },
+  {
+    "ref": "origin/research/typeii-depth14-20261018",
+    "sha": "f7866a810ba4efcdf329c6bae921b242b1c046b0",
+    "differing_files": [],
+    "adoption": "archived candidate; no automatic adoption; prior success not reused",
+    "verification_status": "not_executed_on_integration",
+    "adoption_reason": "not required for infrastructure acceptance; no new mathematical work or prior-run evidence inherited"
+  },
+  {
+    "ref": "origin/research/typeii-divisor-bridge-20261018",
+    "sha": "f7866a810ba4efcdf329c6bae921b242b1c046b0",
+    "differing_files": [],
+    "adoption": "archived candidate; no automatic adoption; prior success not reused",
+    "verification_status": "not_executed_on_integration",
+    "adoption_reason": "not required for infrastructure acceptance; no new mathematical work or prior-run evidence inherited"
+  },
+  {
+    "ref": "origin/research/typeii-divisor-soundness-20261019",
+    "sha": "f7866a810ba4efcdf329c6bae921b242b1c046b0",
+    "differing_files": [],
+    "adoption": "archived candidate; no automatic adoption; prior success not reused",
+    "verification_status": "not_executed_on_integration",
+    "adoption_reason": "not required for infrastructure acceptance; no new mathematical work or prior-run evidence inherited"
+  },
+  {
+    "ref": "origin/research/typeii-witness-reconstruction-20261019-1434",
+    "sha": "f7866a810ba4efcdf329c6bae921b242b1c046b0",
+    "differing_files": [],
+    "adoption": "archived candidate; no automatic adoption; prior success not reused",
+    "verification_status": "not_executed_on_integration",
+    "adoption_reason": "not required for infrastructure acceptance; no new mathematical work or prior-run evidence inherited"
+  },
+  {
+    "ref": "origin/research/w-interval-audit-20261018",
+    "sha": "f7866a810ba4efcdf329c6bae921b242b1c046b0",
+    "differing_files": [],
+    "adoption": "archived candidate; no automatic adoption; prior success not reused",
+    "verification_status": "not_executed_on_integration",
+    "adoption_reason": "not required for infrastructure acceptance; no new mathematical work or prior-run evidence inherited"
+  },
+  {
+    "ref": "origin/research/w-leading-audit-20261019",
+    "sha": "f7866a810ba4efcdf329c6bae921b242b1c046b0",
+    "differing_files": [],
+    "adoption": "archived candidate; no automatic adoption; prior success not reused",
+    "verification_status": "not_executed_on_integration",
+    "adoption_reason": "not required for infrastructure acceptance; no new mathematical work or prior-run evidence inherited"
+  },
+  {
+    "ref": "origin/research/w-power-saving-20261019-r5",
+    "sha": "f7866a810ba4efcdf329c6bae921b242b1c046b0",
+    "differing_files": [],
+    "adoption": "archived candidate; no automatic adoption; prior success not reused",
+    "verification_status": "not_executed_on_integration",
+    "adoption_reason": "not required for infrastructure acceptance; no new mathematical work or prior-run evidence inherited"
+  },
+  {
+    "ref": "origin/research/w-weight-audit-20261019-1330",
+    "sha": "f7866a810ba4efcdf329c6bae921b242b1c046b0",
+    "differing_files": [],
+    "adoption": "archived candidate; no automatic adoption; prior success not reused",
+    "verification_status": "not_executed_on_integration",
+    "adoption_reason": "not required for infrastructure acceptance; no new mathematical work or prior-run evidence inherited"
+  },
+  {
+    "ref": "origin/research/xu-14-examples-audit-20261018",
+    "sha": "f7866a810ba4efcdf329c6bae921b242b1c046b0",
+    "differing_files": [],
+    "adoption": "archived candidate; no automatic adoption; prior success not reused",
+    "verification_status": "not_executed_on_integration",
+    "adoption_reason": "not required for infrastructure acceptance; no new mathematical work or prior-run evidence inherited"
+  }
+]

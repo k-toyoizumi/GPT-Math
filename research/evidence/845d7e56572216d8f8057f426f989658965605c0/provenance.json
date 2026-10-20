@@ -1,0 +1,14 @@
+{
+  "source_sha": "845d7e56572216d8f8057f426f989658965605c0",
+  "run_id": 39414485885,
+  "attempt": 1,
+  "job_id": 118600048013,
+  "artifact_id": 12260781699,
+  "artifact_zip_sha256": "29a1f662bf9f29d5f0268e4c808d8d180b5f875967b48662012b5f0c327fd184",
+  "negative_artifact_id": 12261010873,
+  "negative_zip_sha256": "87f2768c6ad291ca2bc08aa64c6ae68eb8462054162c86cd3df81576d5332318",
+  "retrieved": true,
+  "all_upstream_checksums_verified": true,
+  "projection": "proofs.json omits only verbose structural statement strings; statement_hash and all required proof fields are preserved. axioms.log omitted because proofs.json preserves all declarations and dependencies. upstream-SHA256SUMS describes original artifact, not this projection.",
+  "certificate_identical_to_first_clean_run": true
+}

@@ -1,6 +1,6 @@
 name = "GPTMath"
 version = "0.1.0"
-defaultTargets = ["XuTheorem41Audit"]
+defaultTargets = ["XuGeneralAudit", "XuTheorem41Audit", "TypeIIReconstruction", "TypeIIDepthSeven", "ProgressionCompleteness", "TypeIIDivisorComplete"]
 
 [[lean_lib]]
 name = "XuGeneralAudit"
@@ -18,3 +18,9 @@ name = "TypeIIDepthSeven"
 name = "mathlib"
 scope = "leanprover-community"
 rev = "v4.24.0"
+
+[[lean_lib]]
+name = "ProgressionCompleteness"
+
+[[lean_lib]]
+name = "TypeIIDivisorComplete"

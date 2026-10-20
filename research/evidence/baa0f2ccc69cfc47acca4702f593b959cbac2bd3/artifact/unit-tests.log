@@ -1,0 +1,13 @@
+test_deleted_tracked_source_fails (test_lean_inventory_gate.InventoryTests.test_deleted_tracked_source_fails) ... ok
+test_duplicate_targets_fail (test_lean_inventory_gate.InventoryTests.test_duplicate_targets_fail) ... ok
+test_missing_target_fails (test_lean_inventory_gate.InventoryTests.test_missing_target_fails) ... ok
+test_nested_unregistered_proof_is_included (test_lean_inventory_gate.InventoryTests.test_nested_unregistered_proof_is_included) ... ok
+test_new_unregistered_file_is_still_in_inventory (test_lean_inventory_gate.InventoryTests.test_new_unregistered_file_is_still_in_inventory) ... ok
+test_no_tracked_proofs_fails (test_lean_inventory_gate.InventoryTests.test_no_tracked_proofs_fails) ... ok
+test_registered_file (test_lean_inventory_gate.InventoryTests.test_registered_file) ... ok
+test_untracked_file_is_not_counted (test_lean_inventory_gate.InventoryTests.test_untracked_file_is_not_counted) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.617s
+
+OK

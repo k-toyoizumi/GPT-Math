@@ -1,0 +1,13 @@
+{
+  "seen": [
+    "0f442701d573a56fc7a2f27f34b111c5e3c2eb7f5c3bca8e37e438a8e42508c0"
+  ],
+  "attempts": 2,
+  "progress_count": 1,
+  "task_id": "T11",
+  "source_sha": "b3efc0fa91f4ed8d3402166a6a29748321b69a6a",
+  "result_hash": "bf79c5751c3ecbbba0fd1ba4ec7f157dc73d5f3dcc9e951b9188881b79e5d0e5",
+  "status": "success",
+  "next_action": "stop; await explicit research authorization",
+  "duplicate": true
+}

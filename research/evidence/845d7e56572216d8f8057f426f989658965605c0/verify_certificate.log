@@ -1,0 +1,4 @@
+35 pairs; 426 divisors; no J<=7 witnesses; J=8: [(8, 1, '319 7711')]
+naive candidates: 91235600
+progression candidates: 2385498
+Wrote /home/runner/work/GPT-Math/GPT-Math/experiments/certificate.csv
