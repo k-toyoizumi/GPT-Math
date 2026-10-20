@@ -141,6 +141,40 @@ def wArithmetic : BiAF :=
     funext a
     simp [wWeight]⟩
 
+/--
+The residual kernel is exactly the finite double weighted-Möbius transform
+of the original two-variable arithmetic function.  The nonzero hypothesis is
+only needed to unfold the normalized second-coordinate slice.
+
+This is a finite identity: it does not assert multiplicativity, identify any
+prime-power coefficient, or pass to an Euler product.
+-/
+theorem innerKernel_explicit (A : BiAF) (r t : ℕ) (ht : t ≠ 0) :
+    innerKernel A r t =
+      ∑ y ∈ t.divisorsAntidiagonal,
+        ∑ x ∈ r.divisorsAntidiagonal,
+          weightedMoebius y.1 * weightedMoebius x.1 * A x.2 y.2 := by
+  rw [innerKernel, kernel, ArithmeticFunction.mul_apply]
+  apply Finset.sum_congr rfl
+  intro y hy
+  have hyprod : y.1 * y.2 = t :=
+    (Nat.mem_divisorsAntidiagonal.mp hy).1
+  have hyprod_ne : y.1 * y.2 ≠ 0 := by
+    simpa [hyprod] using ht
+  have hy2 : y.2 ≠ 0 := right_ne_zero_of_mul hyprod_ne
+  simp only [innerSource, hy2, if_false, outerKernel,
+    ArithmeticFunction.smul_apply, Finset.sum_apply, Pi.smul_apply,
+    smul_eq_mul]
+  simp [Finset.mul_sum, mul_assoc]
+
+/-- The explicit finite double transform specialized to the summand of `W(J)`. -/
+theorem innerKernel_wArithmetic_explicit (r t : ℕ) (ht : t ≠ 0) :
+    innerKernel wArithmetic r t =
+      ∑ y ∈ t.divisorsAntidiagonal,
+        ∑ x ∈ r.divisorsAntidiagonal,
+          weightedMoebius y.1 * weightedMoebius x.1 * wWeight x.2 y.2 := by
+  simpa [wArithmetic] using innerKernel_explicit wArithmetic r t ht
+
 @[simp]
 theorem wWeight_of_ne_zero_coprime (u a : ℕ) (hu : u ≠ 0) (ha : a ≠ 0)
     (hcop : Nat.Coprime u a) :
@@ -258,6 +292,8 @@ theorem candidate_constant_transfer :
 #print axioms WMobiusFinite.weightedZeta_mul_weightedMoebius
 #print axioms WMobiusFinite.finite_double_reconstruct
 #print axioms WMobiusFinite.finite_wWeight_reconstruct
+#print axioms WMobiusFinite.innerKernel_explicit
+#print axioms WMobiusFinite.innerKernel_wArithmetic_explicit
 #print axioms WMobiusFinite.odd_axis_from_weighted_moebius
 #print axioms WMobiusFinite.odd_diagonal_from_weighted_moebius
 #print axioms WMobiusFinite.odd_local_mass
