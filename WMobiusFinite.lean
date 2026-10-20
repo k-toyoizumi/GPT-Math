@@ -379,8 +379,13 @@ theorem innerKernel_wArithmetic_prime_one
     {p : ℕ} (hp : p.Prime) :
     innerKernel wArithmetic p 1 =
       wWeight p 1 - (1 / (p : ℚ)) * wWeight 1 1 := by
+  have hsum (f : ℕ → ℚ) :
+      ∑ d ∈ p.divisors, f d = f 1 + f p := by
+    rw [show p = p ^ 1 by simp, Nat.sum_divisors_prime_pow hp]
+    simp
   rw [innerKernel_wArithmetic_explicit p 1 (by norm_num)]
-  simp [weightedMoebius, divideByN, hp, hp.ne_zero]
+  simp [Nat.sum_divisorsAntidiagonal, hsum,
+    weightedMoebius, divideByN, hp, hp.ne_zero]
   ring
 
 /-- The analogous two-term residual-kernel formula on the second axis. -/
@@ -388,8 +393,13 @@ theorem innerKernel_wArithmetic_one_prime
     {p : ℕ} (hp : p.Prime) :
     innerKernel wArithmetic 1 p =
       wWeight 1 p - (1 / (p : ℚ)) * wWeight 1 1 := by
+  have hsum (f : ℕ → ℚ) :
+      ∑ d ∈ p.divisors, f d = f 1 + f p := by
+    rw [show p = p ^ 1 by simp, Nat.sum_divisors_prime_pow hp]
+    simp
   rw [innerKernel_wArithmetic_explicit 1 p hp.ne_zero]
-  simp [weightedMoebius, divideByN, hp, hp.ne_zero]
+  simp [Nat.sum_divisorsAntidiagonal, hsum,
+    weightedMoebius, divideByN, hp, hp.ne_zero]
   ring
 
 /-- At (p,p), the concrete residual kernel is the four-term double
@@ -401,8 +411,13 @@ theorem innerKernel_wArithmetic_prime_prime
         (1 / (p : ℚ)) * wWeight 1 p -
         (1 / (p : ℚ)) * wWeight p 1 +
         (1 / (p : ℚ)) ^ 2 * wWeight 1 1 := by
+  have hsum (f : ℕ → ℚ) :
+      ∑ d ∈ p.divisors, f d = f 1 + f p := by
+    rw [show p = p ^ 1 by simp, Nat.sum_divisors_prime_pow hp]
+    simp
   rw [innerKernel_wArithmetic_explicit p p hp.ne_zero]
-  simp [weightedMoebius, divideByN, hp, hp.ne_zero]
+  simp [Nat.sum_divisorsAntidiagonal, hsum,
+    weightedMoebius, divideByN, hp, hp.ne_zero]
   ring
 
 /-- The actual normalized residual-kernel coefficient at exponent pair
