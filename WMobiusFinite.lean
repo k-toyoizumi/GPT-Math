@@ -427,7 +427,8 @@ theorem innerKernel_wArithmetic_prime_prime
   rw [Nat.sum_divisorsAntidiagonal
     (fun x1 x2 => weightedMoebius p * weightedMoebius x1 * wWeight x2 1)]
   rw [hsum, hsum]
-  simp [weightedMoebius, divideByN, hp, hp.ne_zero]
+  simp [weightedMoebius, divideByN,
+    ArithmeticFunction.moebius_apply_prime hp, Nat.div_self hp.pos, hp.ne_zero]
   ring
 
 /-- The actual normalized residual-kernel coefficient at exponent pair
